@@ -1,0 +1,260 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+}
+
+.logo {
+    height: 250px;
+    width: 250px;
+}
+
+
+nav ul li a{
+    display: block;
+    color: #6e4908;
+    text-decoration: none;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000c5;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+  
+li a{
+    width: 140px;
+    height: 20px;
+    border-right: 1px solid #bbb;
+    transition-duration: 1.5s;
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li a:hover {
+    background-color: #373634c5;
+    width: 100px;
+    height: 50px;
+    color: black;
+}
+
+li a:hover:not(.active) {
+    background-color: #d09707c5;
+}
+  
+.active {
+    background-color: #5555;
+}
+
+h2 {
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 0%;
+    font-size: 3vw;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: white;
+    padding: 20px;
+    font-size: 15px;
+}
+
+h1 {
+    background-image: url("../img/mozaico\ gris.jpg");
+    padding: 50px;
+    margin: 0px;
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.img-insta {
+    position: relative;
+    text-align: center;
+
+}
+
+.login-text {
+    background-color: rgb(253, 249, 249);
+    margin: 10px;
+    padding: 0;
+}
+
+.button { 
+    background-color: #bbb;
+}
+
+.btn-turno {
+    background-color: rgb(248, 244, 244);
+    padding: 10px;
+    border-radius: 15px;
+    color: rgb(9, 0, 0);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 25px;
+}
+.btn-turno:hover{
+    color: rgb(9, 0, 0) !important;
+    border: 3px solid rgb(2, 10, 60);
+}
+
+.turno {
+    text-align: center;
+    text-decoration: none;
+    color: rgb(247, 247, 247);
+}
+
+.form-contact {
+    text-align: center;
+    color: white;
+    padding: 5%;
+    background-color: rgba(3, 11, 33, 0.882)
+}
+
+.dato {
+    color: white;
+}
+
+#boton {
+    color: white;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#boton:hover{
+    border: 3px solid rgb(2, 10, 60);
+}
+
+
+#footer {
+    background-color: rgb(255, 252, 252);
+    /* position: fixed; */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+#img-inst-logo {
+    background-color: rgb(255, 252, 252);
+}
+
+#img-inst {
+    text-align: start;
+}
+
+#img-efcarcare {
+    text-align-last: right;
+    padding: auto;
+    margin: 100px;
+}
+
+.imagenes-productos{
+    display: grid;
+
+}
+
+
+.menu-btn{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#cars{
+    padding-inline-end: 9%;
+    text-align: left;
+    color: white;
+}
+
+
+.container {
+    position: relative;
+    text-align: center;
+}
+
+
+.grid-container {
+    display: grid;
+    height: 400px;
+    align-content: space-evenly;
+    /* grid-template-columns: 50px 50px; */
+    grid-template-areas: 'miArea miArea miArea miArea miArea';
+    gap: 10px;
+    background-color: #080909;
+    padding: 10px;
+    justify-content: center;
+}
+
+
+/* @media screen and(min-whidth:600px){
+    .menu{
+        display: flex !important;
+        justify-content: flex-end;
+    }
+
+    .menu-btn{
+        display: none;
+    }
+    
+    .menu.logo{
+        float: left;
+    }
+} */
+
+
+/* #subtitulo{
+    text-align: center;
+    padding-inline-start: 10%;
+} */
+
+/* #mozaico {
+    opacity: 20%;
+    position: relative;
+    width: 100%;
+    height: auto;
+} */
+
+/* /* .logo {
+    width: 150px;
+    height: 150px;
+} */
+  
+/* .logo:hover {
+    animation: tilt-n-move-shaking 0.35s infinite;
+} */ 
+
+/* @keyframes tilt-n-move-shaking{
+    0% { transform: translate(5px, 5px) rotate(5deg); }
+    25% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-5px, 5px) rotate(-5deg); }
+    75% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+
+} */
+
+

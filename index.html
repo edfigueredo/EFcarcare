@@ -11,84 +11,191 @@
 
 <body>
     <header>
+        <nav>
+            <!-- logo -->
+            <!-- <div class="logo">
+                <a href="/"><img src="./static/img/apple-touch-icon.png" alt="img-logo" width="150"></a>
+            </div><br> -->
+            <div class="logo">
+               <video autoplay loop width="180" muted>
+                 <source  src="./static/img/ef car care video logo.mp4" type="video/mp4" class="vid-logo">
+                 <source  src="img/ef car care video logo.mp4" type="video/mp4">                   
+               </video>  
+            </div>
+            <!-- Hipervinculos del menu -->
+            <div class="menu">
+                <ul>
+                   <li><a href="/">Inicio</a></li>
+                   <li><a href="#servicios-productos">Servicios y Productos</a></li>
+                   <li><a href="#nosotros">Sobre Nosotros</a></li>
+                   <li><a href="#contactenos">Contactenos</a></li>
+                </ul>
+            </div><br>
+        </nav>
 
-    </header>   
-    
+    </header>
+
+
     <main>
-
-        <section id="Inicio">
-            <div>
-                <!--podemos ponerle una animacion que aparezca el video y desaparezca o sea el div creceria y despues se achicaria-->
-                <video autoplay loop width="200" muted>
-                    <source  src="img/ef car care video logo.webm" type="video/webm">
-                    <source  src="img/ef car care video logo.mp4" type="video/mp4">                   
-                    Tu navegador no soporta la reproducción de video.
-                </video>   
-            </div>
-            <nav>
-                <a href="#Inicio">Inicio</a>
-                <a href="#Servicios">Servicios y Productos</a>
-                <a href="#Nosotros">Sobre Nosotros</a>
-                <a href="#Contactenos">Contactenos</a>
-            </nav>
-            <div>
-                <img src="../img/portada.JPG" alt="Ef Car Care" style="float: left">
-
-            </div>
-            <div width="100%">
-
-            <h1 id="textoInicio">
-                Estamos obsesionados con la calidad y la perfeccion.<br/> 
-                Haremos de tu vehiculo una pieza maestra
-            </h1>
-
-            <div id="botonTurno">
-              <!--  crear un boton que lleve a la seccion turnos-->
-            </div>
-            </div>
+        <!-- Banner -->
+        <section>
+            <div id="banner">
+                <img src="./static/img/portada.JPG" alt="img-portada" width="100%">
+            </div><br><br><br>
         </section>
 
-        <section id="Servicios">
-        <h1 id="Secciones">Servicios y Productos</h1>
-        <!--AGREGAR IMAGENES QUE CUANDO SE PASE POR ENCIMA DE LA IMAGEN SE DESPLIEGUE LOS SERVICIOS QUE REPRESENTA-->
-        <p style="font-style: italic;">Descubre mas de nuestros trabajos en..</p>
-        <!--Agregar boton del instagram -->
-        </section>
-        
-        <section id="Nosotros">
-        <h1 id="Secciones">Sobre Nosotros</h1>
-        <!--agregar frame del googlemaps-->
-        <div>
-        <p>En nuestro local de estética vehicular, nos enorgullece ofrecer servicios de primera calidad respaldados por años de experiencia y capacitación especializada. Somos entrenados por expertos de la industria, incluyendo capacitaciones personalizadas como:
-        </p>
-        
-            <p> • Capacitación personalizada en car detailing nivel profesional con Matias Andrade de acrylic shine Buenos Aires año 2017.</p>
-            <p> • Capacitación en instalación de PPF en exige Buenos Aires año 2022.</p>
-            <p> • Capacitación técnico sacabollos en ballester sacabollos Buenos Aires año 2024.</p>
-        
-        <p>    
-            Nos comprometemos a brindar un servicio excepcional a cada cliente que pase por nuestras puertas. Desde la corrección de barniz hasta los tratamientos cerámicos y acrílicos, cada detalle es atendido con cuidado y precisión para garantizar resultados impecables.
+        <!-- Turnos -->
+        <section>
+
+            <div>
+                <h1>Estamos obsesionados con la calidad y la perfección.<br/> 
+                    Haremos de tu vehículo una pieza maestra</h1>
+                
+            <!-- </div><br><br><img id="mozaico" src="./static/img/mozaico gris.jpg" alt="img-turnos" width="100%"> -->
+
+            <div class="turno">
+                <a class="btn-turno" href="./templates/turnos.html">
+                    <i class="fa-solid fa-calendar-days fa-bounce" style="color: #1f3251; background-color: white;"></i>
+                    <span class="login-text">Solicitar Turno</span>
+                </a>
+            </div>
             
-            Como representantes de marcas líderes en la industria, como <strong> Garware </strong>para PPF,<strong> Gtechniq </strong>para selladores, <strong>Polisher Boys </strong> para productos de pulido y <strong>Ziel </strong> para cubre alfombras, lo que demuestra nuestro compromiso con la excelencia en cada paso del proceso.
-        </p>    
-        <p>En nuestro local, la calidad y la satisfacción del cliente son nuestra máxima prioridad. Confía en nosotros para cuidar de tu vehículo con el más alto estándar de atención y profesionalismo..</p>
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210147.47617046564!2d-58.59845891798022!3d-34.61542987423299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires!5e0!3m2!1sen!2sar!4v1715397898474!5m2!1sen!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        </div>
+        </section><br><br>
+
+        <!-- Servicios y Productos -->
+        <section class="container">
+            <div id="servicios-productos">
+                <h2>Servicios y Productos</h2>
+            </div>
+        </section><br>
+
+        <section>
+            <div class="grid-container" "vid1">
+                <video width="400" height="379" autoplay muted loop>
+                    <source src="./static/img/video1.MP4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="grid-container">
+                <img src="./static/img/imag1.PNG" alt="pulido" width="400" height="379">
+            </div>
+
+            <div class="grid-container" >
+                <img src="./static/img/imag2.JPG" alt="tapizado" width="400" height="379">
+            </div>
+
+            <div class="grid-container">
+                <img src="./static/img/imag3.JPG" alt="encerado" width="400" height="379">
+            </div>
+
+            <div class="grid-container">
+                <img src="./static/img/imag4.JPG" alt="lavado" width="400" height="379">
+            </div>
+        </section><br><br>
+
+        <!-- Redes Sociales- Instagram -->
+        <section>
+            <h3><span>Descubre nuestros trabajos en... </span></h3>
+            <br>
+            <div class="img-insta">
+                <p><a href="https://www.instagram.com/efcarcare/" target="iframe_a"><img src="./static/img/instagram.png" alt="logo-instagram" width="300"></a></p>
+            </div>
+        </section>
+        <br><br>
+
+        <!-- Sobre Nosotros- Ubicación -->
+        <section>
+            <div id="nosotros">
+                <h2>Sobre Nosotros</h2>
+            </div><br>
+
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1814220.6427372526!2d-57.56484291557935!3d-27.363230190180314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bf3cfba0ec93%3A0x9b4c49d060c3a211!2sEF.carcare!5e0!3m2!1ses!2sar!4v1714773779756!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <br><br>
+            <div>
+                <p>
+                    En nuestro local de estétita vehícular, nos enorgullece ofrecer servicio de primera calidad respaldados por años de experiencia y capacitación especializada. Somos entrenados por expertos de la industria, incluyendo capacitaciones personalizadas como:
+                    <br><br>
+                    • Capacitación personalizada en car Detailing nivel profesional con Matias Andrade de Acrylic Shine Buenos Aires año 2017.
+                    <br><br>
+                    • Capacitación en instalación de PPF en exige Buenos Aires año 2022.
+                    <br><br>
+                    • Capacitación tecnica sacabollos en ballester sacabollos Buenos Aires año 2024.
+    
+                    <br><br>
+                    Nos comprometemos a brindar un servicio excepcional a cada cliente que pasa por nuestras puertas. Desde la corrección de barniz hasta los tratamientos ceramicos y acrilicos, cada detalle es atendido con cuidado y presición para garantizar resultados impecables.
+                    <br>
+                    Como representantes de marcas lideres en la industria, como <strong>Garware</strong> para PPF, <strong>Gtechniq</strong> para selladores, <strong>Polisher Boys</strong> para productos de pulido y <strong>Ziel</strong> para cubre alfombras, estamos comprometidos con la excelencia en cada paso del proceso.
+                    <br><br>
+                    • En nuestro local, la calidad y la satisfaccion del cliente son nuestra maxima prioridad. Confia en nosotros para cuidar de tu vehículo con el mas alto estandar de atención y profesionalismo.
+    
+                </p>
+            </div>
+
+        </section><br><br><br>
+
+        <!-- Formulario de Contacto -->
+        <section>
+            <div id="contactenos">
+                <h2> Contactenos</h2>
+            </div>
+
+            <div class="form-contact">
+                <form action="/action_page.php" method="get">
+                    <label for="nombre-apellido"></label><br>
+                    <input type="text" class="dato" name="nombreyApellido" value="" placeholder="Nombre y Apellido" required>
+                    <br><br>
+                    <label for="cars"></label>
+                    <select id="cars">
+                        <option value="tipo-vehiculo">Tipo de vehiculo</option>
+                        <option value="volvo">Audi</option>
+                        <option value="fiat">Mercedes-Benz</option>
+                        <option value="ford">Volkswagen</option>
+                        <option value="audi">Peugeot</option>
+                    </select required><br><br>
+                    <label for="telefono"></label>
+                    <input type="tel" class="dato" name="phone" placeholder="N° de Celular" required>
+                    <br><br>
+
+                    <h3><u>Servicios Interesados</u></h3><br>
+
+                    <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
+                    <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
+                    <br>
+                    <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo2">
+                    <label for="modelo2"> Ploteos - Película protectora PPF.</label><br>
+                    <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
+                    <label for="modelo3"> Limpieza interior - motores - chasis.</label><br>
+                    <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo3">
+                    <label for="modelo4"> Lavado detallados.</label><br>
+                    <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo4">
+                    <label for="modelo5"> Reparación, pintura de llantas o piezas.</label><br><br>
+                    <label for="myfile"><u> Ingrese una imagen del vehículo</u></label>
+                    <input type="file" id="myfile" name="myfile"><br><br>
+                    <textarea class="dato" name="message" rows="10" cols="30" placeholder="Agregue un comentario aqui..."></textarea>
+                    <br><br>
+                    <button id="boton">Browse...</button><br><br>
+                    <!-- <input type="submit" value="Browse..."><br><br> -->
+                </form><br><br>
+
+            </div>
         </section>
 
-        <section id="Contactenos">
-        <h1 id="Secciones">Contactenos</h1>
-
-        </div>
-
-        </section>
-        
     </main>
 
-    <footer>
+    <footer id="footer">
+        <div id="img-inst-logo">
+            <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="./static/img/IMG_8988.JPG" alt="logo-qr" width="150"></a>
 
+            <a id="img-efcarcare" href="#"><img src="./static/img/logo blanco.JPG" alt="logo-ef-car-blanco" width="150"></a>
+        </div>
     </footer>
+
+    <!-- Script JS  -->
+    <script src="./java.js"></script>
+
+
 </body>
 </html>
