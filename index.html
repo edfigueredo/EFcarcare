@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/logo.ico">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Script de Fontawesome -->
+    <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
+    <!-- Titulo -->
     <title>EF Car Care</title>
 
 </head>
@@ -17,18 +21,18 @@
                 <a href="/"><img src="./static/img/apple-touch-icon.png" alt="img-logo" width="150"></a>
             </div><br> -->
             <div class="logo">
-               <video autoplay loop width="180" muted>
-                 <source  src="img/ef car care video logo.webm" type="video/mp4" class="vid-logo">
-                 <source  src="img/ef car care video logo.mp4" type="video/mp4">                   
-               </video>  
+                <video autoplay loop width="180" muted>
+                    <source src="img/ef car care video logo.webm" type="video/mp4" class="vid-logo">
+                    <source src="img/ef car care video logo.mp4" type="video/mp4">
+                </video>
             </div>
             <!-- Hipervinculos del menu -->
             <div class="menu">
                 <ul>
-                   <li><a href="/">Inicio</a></li>
-                   <li><a href="#servicios-productos">Servicios y Productos</a></li>
-                   <li><a href="#nosotros">Sobre Nosotros</a></li>
-                   <li><a href="#contactenos">Contactenos</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#servicios-productos">Servicios y Productos</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contactenos">Contactenos</a></li>
                 </ul>
             </div>
         </nav>
@@ -47,19 +51,19 @@
         <!-- Turnos -->
         <section>
 
-            <div>
-                <h1>Estamos obsesionados con la calidad y la perfección.<br/> 
+            <div class="solicita-turno">
+                <h1>Estamos obsesionados con la calidad y la perfección.<br />
                     Haremos de tu vehículo una pieza maestra</h1>
-                
-            <!-- </div><br><br><img id="mozaico" src="./static/img/mozaico gris.jpg" alt="img-turnos" width="100%"> -->
-
-            <div class="turno">
-                <a class="btn-turno" href="./templates/turnos.html">
-                    <i class="fa-solid fa-calendar-days fa-bounce" style="color: #1f3251; background-color: white;"></i>
-                    <span class="login-text">Solicitar Turno</span>
-                </a>
+                <!-- </div><br><br><img id="mozaico" src="./static/img/mozaico gris.jpg" alt="img-turnos" width="100%"> -->
+                <div class="turno">
+                    <a class="btn-turno" href="#" >
+                        <i class="fa-solid fa-calendar-days fa-bounce"
+                            style="color: #1f3251; background-color: white;"></i>
+                        <span class="login-text">Solicitar Turno</span>
+                    </a>
+                </div>
             </div>
-            
+
         </section><br><br>
 
         <!-- Servicios y Productos -->
@@ -69,15 +73,23 @@
             </div>
         </section><br>
 
-        <section>
-            <div class="grid-container" "vid1">
-                <video width="400" height="379" autoplay muted loop>
-                    <source src="img/MercedesAmg.MP4" type="video/mp4">
-                </video>
-            </div>
+        <section class="grid-seccion">
 
             <div class="grid-container">
-                <img src="img/imag1.PNG" alt="pulido" width="400" height="379">
+
+                <div class="gid-img"><img class="grid-img" src="img/puliendo adapt.PNG" alt="pulido"></div>
+                <video class="grid-img" autoplay muted loop>
+                    <source src="img/MercedesAmg.MP4" type="video/mp4">
+                </video>
+                <div class="gid-img"><img class="grid-img" src="img/preparacion p venta.JPG" alt="pulido"></div>
+                <div class="gid-img"><img class="grid-img" src="img/interior.PNG" alt="pulido"></div>
+                <div class="gid-img"><img class="grid-img" src="img/lavado.JPG" alt="pulido"></div>
+
+            </div>
+
+            <!-- Modifique la seccion de las imagenes y comente el codigo anterior -->
+            <!--<div class="grid-container">
+                <img src="img/puliendo.PNG" alt="pulido" width="400" height="379">
             </div>
 
             <div class="grid-container" >
@@ -90,7 +102,7 @@
 
             <div class="grid-container">
                 <img src="img/imag4.JPG" alt="lavado" width="400" height="379">
-            </div>
+            </div> -->
         </section><br><br>
 
         <!-- Redes Sociales- Instagram -->
@@ -98,7 +110,8 @@
             <h3><span>Descubre nuestros trabajos en... </span></h3>
             <br>
             <div class="img-insta">
-                <p><a href="https://www.instagram.com/efcarcare/" target="iframe_a"><img src="./static/img/instagram.png" alt="logo-instagram" width="300"></a></p>
+                <a href="https://www.instagram.com/efcarcare/" target="iframe_a"><img
+                            src="/img/instagram.png" alt="logo-instagram" width="300"></a>
             </div>
         </section>
         <br><br>
@@ -110,27 +123,39 @@
             </div><br>
 
             <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1814220.6427372526!2d-57.56484291557935!3d-27.363230190180314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bf3cfba0ec93%3A0x9b4c49d060c3a211!2sEF.carcare!5e0!3m2!1ses!2sar!4v1714773779756!5m2!1ses!2sar" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1814220.6427372526!2d-57.56484291557935!3d-27.363230190180314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457bf3cfba0ec93%3A0x9b4c49d060c3a211!2sEF.carcare!5e0!3m2!1ses!2sar!4v1714773779756!5m2!1ses!2sar"
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <br><br>
             <div>
                 <p>
-                    En nuestro local de estétita vehícular, nos enorgullece ofrecer servicio de primera calidad respaldados por años de experiencia y capacitación especializada. Somos entrenados por expertos de la industria, incluyendo capacitaciones personalizadas como:
+                    En nuestro local de estétita vehícular, nos enorgullece ofrecer servicio de primera calidad
+                    respaldados por años de experiencia y capacitación especializada. Somos entrenados por expertos de
+                    la industria, incluyendo capacitaciones personalizadas como:
                     <br><br>
-                    • Capacitación personalizada en car Detailing nivel profesional con Matias Andrade de Acrylic Shine Buenos Aires año 2017.
+                    • Capacitación personalizada en car Detailing nivel profesional con Matias Andrade de Acrylic Shine
+                    Buenos Aires año 2017.
                     <br><br>
                     • Capacitación en instalación de PPF en exige Buenos Aires año 2022.
                     <br><br>
                     • Capacitación tecnica sacabollos en ballester sacabollos Buenos Aires año 2024.
-    
+
                     <br><br>
-                    Nos comprometemos a brindar un servicio excepcional a cada cliente que pasa por nuestras puertas. Desde la corrección de barniz hasta los tratamientos ceramicos y acrilicos, cada detalle es atendido con cuidado y presición para garantizar resultados impecables.
+                    Nos comprometemos a brindar un servicio excepcional a cada cliente que pasa por nuestras puertas.
+                    Desde la corrección de barniz hasta los tratamientos ceramicos y acrilicos, cada detalle es atendido
+                    con cuidado y presición para garantizar resultados impecables.
                     <br>
-                    Como representantes de marcas lideres en la industria, como <strong>Garware</strong> para PPF, <strong>Gtechniq</strong> para selladores, <strong>Polisher Boys</strong> para productos de pulido y <strong>Ziel</strong> para cubre alfombras, estamos comprometidos con la excelencia en cada paso del proceso.
+                    Como representantes de marcas lideres en la industria, como <strong>Garware</strong> para PPF,
+                    <strong>Gtechniq</strong> para selladores, <strong>Polisher Boys</strong> para productos de pulido y
+                    <strong>Ziel</strong> para cubre alfombras, estamos comprometidos con la excelencia en cada paso del
+                    proceso.
                     <br><br>
-                    • En nuestro local, la calidad y la satisfaccion del cliente son nuestra maxima prioridad. Confia en nosotros para cuidar de tu vehículo con el mas alto estandar de atención y profesionalismo.
-    
+                    • En nuestro local, la calidad y la satisfaccion del cliente son nuestra maxima prioridad. Confia en
+                    nosotros para cuidar de tu vehículo con el mas alto estandar de atención y profesionalismo.
+
                 </p>
             </div>
 
@@ -145,7 +170,8 @@
             <div class="form-contact">
                 <form action="/action_page.php" method="get">
                     <label for="nombre-apellido"></label><br>
-                    <input type="text" class="dato" name="nombreyApellido" value="" placeholder="Nombre y Apellido" required>
+                    <input type="text" class="dato" name="nombreyApellido" value="" placeholder="Nombre y Apellido"
+                        required>
                     <br><br>
                     <label for="cars"></label>
                     <select id="cars">
@@ -174,7 +200,8 @@
                     <label for="modelo5"> Reparación, pintura de llantas o piezas.</label><br><br>
                     <label for="myfile"><u> Ingrese una imagen del vehículo</u></label>
                     <input type="file" id="myfile" name="myfile"><br><br>
-                    <textarea class="dato" name="message" rows="10" cols="30" placeholder="Agregue un comentario aqui..."></textarea>
+                    <textarea class="dato" name="message" rows="10" cols="30"
+                        placeholder="Agregue un comentario aqui..."></textarea>
                     <br><br>
                     <button id="boton">Browse...</button><br><br>
                     <!-- <input type="submit" value="Browse..."><br><br> -->
@@ -187,9 +214,11 @@
 
     <footer id="footer">
         <div id="img-inst-logo">
-            <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="./static/img/IMG_8988.JPG" alt="logo-qr" width="150"></a>
+            <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="./static/img/IMG_8988.JPG"
+                    alt="logo-qr" width="150"></a>
 
-            <a id="img-efcarcare" href="#"><img src="./static/img/logo blanco.JPG" alt="logo-ef-car-blanco" width="150"></a>
+            <a id="img-efcarcare" href="#"><img src="./static/img/logo blanco.JPG" alt="logo-ef-car-blanco"
+                    width="150"></a>
         </div>
     </footer>
 
@@ -198,4 +227,5 @@
 
 
 </body>
+
 </html>
