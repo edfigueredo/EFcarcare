@@ -9,11 +9,25 @@
 .logo {
     height: 250px;
     width: 250px;
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+    top:-100px;
+}
+/* ESTILOS Y FORMATO AL MENÚ*/
+
+nav {
+    display: flex;
+    justify-content:space-between;
+    height: 170px;
+
 }
 
+.menu {
+    display: flex;
+}
 
 nav ul li a{
-    display: block;
     color: #6e4908;
     text-decoration: none;
     padding: 10px;
@@ -25,37 +39,47 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #000000c5;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+    display: flex;
+    align-items: center;
+    /* position: -webkit-sticky;
+    position: sticky; */
+    /* top: 0; */
 }
-  
+
+li {
+    flex-direction: row;
+}
 li a{
-    width: 140px;
     height: 20px;
     border-right: 1px solid #bbb;
     transition-duration: 1.5s;
-    float: left;
     display: block;
     text-align: center;
-    padding: 14px 16px;
+    /* padding: 14px 16px; */
     text-decoration: none;
+    text-transform: uppercase;
+    margin-left: 10px;
+    margin-right: 10px;
 }
-  
+
 li a:hover {
     background-color: #373634c5;
-    width: 100px;
-    height: 50px;
+    /* width: 100px;
+    height: 50px; */
     color: black;
 }
 
 li a:hover:not(.active) {
     background-color: #d09707c5;
 }
-  
+
 .active {
     background-color: #5555;
 }
+
+/* BANNER */
+
+
 
 h2 {
     background-color: white;
@@ -102,7 +126,7 @@ h1 {
     padding: 0;
 }
 
-.button { 
+.button {
     background-color: #bbb;
 }
 
@@ -220,7 +244,7 @@ h1 {
     .menu-btn{
         display: none;
     }
-    
+
     .menu.logo{
         float: left;
     }
@@ -243,10 +267,10 @@ h1 {
     width: 150px;
     height: 150px;
 } */
-  
+
 /* .logo:hover {
     animation: tilt-n-move-shaking 0.35s infinite;
-} */ 
+} */
 
 /* @keyframes tilt-n-move-shaking{
     0% { transform: translate(5px, 5px) rotate(5deg); }
