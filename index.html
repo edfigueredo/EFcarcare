@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./img/logo.ico">
+    <link rel="icon" href="./img/logo.JPG">
     <link rel="stylesheet" href="css/styles.css">
     <!-- Script de Fontawesome -->
     <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
@@ -51,17 +52,16 @@
         <!-- Turnos -->
         <section>
 
-            <div class="solicita-turno">
+            <div class="leyenda-banner">
                 <h1>Estamos obsesionados con la calidad y la perfección.<br />
                     Haremos de tu vehículo una pieza maestra</h1>
                 <!-- </div><br><br><img id="mozaico" src="./static/img/mozaico gris.jpg" alt="img-turnos" width="100%"> -->
-                <div class="turno">
-                    <a class="btn-turno" href="#">
-                        <i class="fa-solid fa-calendar-days fa-bounce"
-                            style="color: #1f3251; background-color: white;"></i>
-                        <span class="login-text">Solicitar Turno</span>
-                    </a>
-                </div>
+            </div>
+            <div class="turno">
+                <a class="btn-turno" href="#">
+                    <i class="fa-solid fa-calendar-days fa-bounce" style="color: #1f3251; background-color: white;"></i>
+                    <span class="login-text">Solicitar Turno</span>
+                </a>
             </div>
 
         </section><br><br>
@@ -107,7 +107,7 @@
 
         <!-- Redes Sociales- Instagram -->
         <section>
-            <h3><span>Descubre nuestros trabajos en... </span></h3>
+            <h3>Descubre nuestros trabajos en... </h3>
             <br>
             <div class="img-insta">
                 <a href="https://www.instagram.com/efcarcare/" target="iframe_a"><img src="/img/instagram.png"
@@ -173,50 +173,61 @@
 
                 <div class="form-port">
                     <!-- Container de campos del formulario -->
-                    <form class="form-contact-data" action="/action_page.php" method="get">
+                    <form class="form-contact-data" action="/action_page.php" method="get" autocomplete="off">
                         <div class="form-contact-data form-contact-data-1">
 
-                        <label for="nombre-apellido" required>Ingrese Nombre</label>
-                        <input type="text" class="dato" name="nombreyApellido" value="" placeholder="Nombre y Apellido"
-                            required>
+                            <label for="nombre-apellido" required class="label-nombre">Ingrese Nombre</label>
+                            <input type="text" class="dato input-nombre" name="nombre-apellido" id="nombre-apellido"
+                                placeholder="Nombre y Apellido" required>
 
-                        <label for="telefono">Ingrese Numero de contacto</label>
-                        <input type="tel" class="dato" name="phone" placeholder="N° de Celular" required>
+                            <label for="telefono">Ingrese Numero de contacto</label>
+                            <input type="tel" id="telefono" class="dato input-contacto" name="phone"
+                                placeholder="N° de Celular" required>
 
-                        <h3 class="title-service">Servicios Interesados</h3>
-                        <div class="servicios-interez">
-                            <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
-                            <label for="modelo2"> Ploteos - Película protectora PPF.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo2">
-                            <label for="modelo3"> Limpieza interior - motores - chasis.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
-                            <label for="modelo4"> Lavado detallados.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo3">
-                            <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo4">
+                            <h3 class="title-service">Servicios Interesados</h3>
+                            <div class="servicios-interez">
+                                <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
+                                <label for="modelo2"> Ploteos - Película protectora PPF.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo2">
+                                <label for="modelo3"> Limpieza interior - motores - chasis.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo1">
+                                <label for="modelo4"> Lavado detallados.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo3">
+                                <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto" value="modelo4">
+                            </div>
+
                         </div>
-                        
-                    </div>
-                    <div class="form-contact-data form-contact-data-2">
+                        <div class="form-contact-data form-contact-data-2">
 
-                        <label for="cars">Ingrese tipo de vehiculo</label>
-                        <select id="cars" required>
-                            <option value="tipo-vehiculo">Tipo de vehiculo</option>
-                            <option value="volvo">Audi</option>
-                            <option value="fiat">Mercedes-Benz</option>
-                            <option value="ford">Volkswagen</option>
-                            <option value="audi">Peugeot</option>
-                        </select>
+                            <label for="cars">Ingrese tipo de vehiculo</label>
+                            <select id="cars" class="select-vehiculo" required>
+                                <option value="tipo-vehiculo">Tipo de vehiculo</option>
+                                <option value="volvo">Audi</option>
+                                <option value="fiat">Mercedes-Benz</option>
+                                <option value="ford">Volkswagen</option>
+                                <option value="audi">Peugeot</option>
+                            </select>
 
-                        <label for="myfile"><u> Ingrese una imagen del vehículo</u></label>
-                        <input type="file" id="myfile" name="myfile">
-                        
-                        <textarea class="dato" name="message" rows="10" cols="30"
-                            placeholder="Agregue un comentario aqui..."></textarea>
-                        <br><br>
-                        <button id="boton">Browse...</button><br><br>
-                    </div>
+
+                            <div class="adj-file">
+                                <label>
+                                    Ingrese una imagen del vehículo <br>
+                                    <label for="archiv">
+                                        <img src="/img/submit.png" alt="subir">
+                                        <h3 id="upload-img"></h3>
+                                        <br>
+                                    </label>
+                                </label>
+                                <input type="file" name="myfile" id="archiv" class="upload-arch">
+                            </div>
+
+
+                            <textarea class="text-area" name="message" rows="10" cols="30"
+                                placeholder="Agregue un comentario aqui..." no-re></textarea>
+                            <button id="boton">Browse...</button>
+                        </div>
                         <!-- <input type="submit" value="Browse..."><br><br> -->
                     </form>
                 </div>
@@ -228,16 +239,15 @@
 
     <footer id="footer">
         <div id="img-inst-logo">
-            <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="img/IMG_8988.JPG"
-                    alt="logo-qr" width="150"></a>
-
-            <a id="img-efcarcare" href="#"><img src="img/logo blanco.JPG" alt="logo-ef-car-blanco"
+            <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="img/IMG_8988.JPG" alt="logo-qr"
                     width="150"></a>
+
+            <a id="img-efcarcare" href="#"><img src="img/logo blanco.JPG" alt="logo-ef-car-blanco" width="150"></a>
         </div>
     </footer>
 
     <!-- Script JS  -->
-    <script src="./java.js"></script>
+    <script src="script.js"></script>
 
 
 </body>
