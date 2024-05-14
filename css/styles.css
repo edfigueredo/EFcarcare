@@ -124,13 +124,14 @@ h3 {
 p {
     color: white;
     padding: 20px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 /*  BANNER */
 
 #banner img {
     height: 889px;
+    object-fit: contain;
 }
 
 .leyenda-banner {
