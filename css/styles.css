@@ -425,6 +425,64 @@ input {
 }
 
 
+/* Se utilizo Transition para efecto en las imagenes */
+.gid-img:hover {
+    opacity: 0.9;
+    width: 350px;
+    height: 350px;
+}
+
+.gid-img {
+    width: 250px;
+    height: 250px;
+    /* position: absolute; */
+    font-weight: bold;
+    padding: 3px;
+    float: left;
+    -webkit-transition-property: -webkit-transform 1s, width 1s, height 1s, transform 1s, background 1s, opacity 1s;
+    transition-property: width, height, transform, background, opacity;
+    transition-duration: 1s, 1s, 1s, 1s, 1s;
+    opacity: 0.4;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 450ms;
+}
+
+.gid-img:hover .gid-img {
+    bottom: 0;
+}
+
+.detail-title {
+    color: white;
+    margin: 5px 0px 0px 0px;
+    line-height: 1.2em;
+}
+
+.item-detail-title {
+    font-family: 'poiret';
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    margin: 3px 0px;
+}
+
+/* Agregue diseño para el boton de Browse y color para el input de mensaje */
+.text-area {
+    color: white;
+    padding: 8px;
+    font-family: 'poiret';
+}
+
+#boton {
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    font-family: 'poiret';
+    border-radius: 8px;
+    cursor: pointer;
+}
+
 /* 
 #boton {
     color: white;
