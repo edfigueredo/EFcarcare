@@ -15,12 +15,10 @@
 </head>
 
 <body>
-    <header>
+    <header class="header" >
         <nav>
             <!-- logo -->
-            <!-- <div class="logo">
-                <a href="/"><img src="./static/img/apple-touch-icon.png" alt="img-logo" width="150"></a>
-            </div><br> -->
+
             <div class="logo">
                 <video autoplay loop width="180" muted>
                     <source src="img/ef car care video logo.webm" type="video/mp4" class="vid-logo">
@@ -43,19 +41,18 @@
 
     <main>
         <!-- Banner -->
-        <section>
+        <section class="banner">
             <div id="banner">
                 <img src="img/portada.JPG" alt="img-portada" width="100%">
             </div>
         </section>
 
         <!-- Turnos -->
-        <section>
+        <section class="turnos">
 
             <div class="leyenda-banner">
                 <h1>Estamos obsesionados con la calidad y la perfección.<br />
                     Haremos de tu vehículo una pieza maestra</h1>
-                <!-- </div><br><br><img id="mozaico" src="./static/img/mozaico gris.jpg" alt="img-turnos" width="100%"> -->
             </div>
             <div class="turno">
                 <a class="btn-turno" href="#contactenos">
@@ -66,20 +63,77 @@
 
         </section><br><br>
 
+       
         <!-- Servicios y Productos -->
-        <section class="container">
-            <div id="servicios-productos">
+        <section  >
+            <div id="servicios-productos" class="servicios-productos">
                 <h2>Servicios y Productos</h2>
+                <br>
             </div>
+            
+            <div class="container">
+                <!--columna izquierda-->
+                <div class="grid-foto-izq">
+                    
+                    <div class="gid-img">
+                        <img class="grid-img" src="img/puliendo adapt.PNG" alt="pulido">
+                    <!---->
+                        <p class="detail-title" class="item-detail-title"> Trabajo de Pulido.</p>
+                    </div>
+                    <br/>
+                    <div class="gid-img">
+                        <img class="grid-img" src="img/interior.PNG" alt="pulido">
+                    <!---->
+                            <p class="detail-title" class="item-detail-title"> Limpieza del Interior.</p>
+                    </div>
+                
+                </div>
+                <!--columna central del video-->
+                <div class="grid-video">
+                    
+                    <video width="300px" autoplay muted loop>
+                    <source src="img/MercedesAmg.MP4" type="video/mp4">
+                    </video>
+                </div>
+
+                <!--columna derecha-->
+                <div class="grid-foto-der">
+                    
+                    <div class="gid-img">
+                    <img class="grid-img" src="img/preparacion p venta.JPG" alt="pulido">
+                   
+                    <p class="detail-title" class="item-detail-title"> Preparación para la Venta.</p>
+                    </div>
+                    <br>
+                    <div class="gid-img">
+                        <img class="grid-img" width="100%" src="img/lavado.JPG" alt="pulido">
+                     
+                        <p class="detail-title" class="item-detail-title"> Lavado del Vehículo.</p>
+                    </div>
+                </div>
+            </div> 
+            
         </section><br>
 
-        <section class="grid-seccion">
+
+
+
+
+
+
+
+
+
+
+
+
+<!--        <section class="grid-seccion">
 
 
             <div class="grid-container">
-
+-->
                 <!-- Agregue Div y Parrafos cada uno con su clase para realizar el efecto transition en titulos e imagenes -->
-                <div class="gid-img">
+<!--                <div class="gid-img">
                     <img class="grid-img" src="img/puliendo adapt.PNG" alt="pulido">
                     <div class="detail-title">
                         <p class="item-detail-title"> Trabajo de Pulido.</p>
@@ -96,9 +150,10 @@
                 </div>
                 <div class="gid-img">
                     <img class="grid-img" src="img/interior.PNG" alt="pulido">
-                    <div class="detail-title">
+                    
+                <div class="detail-title">
                         <p class="item-detail-title"> Limpieza del Interior.</p>
-                    </div>
+                </div>
                 </div>
                 <div class="gid-img">
                     <img class="grid-img" src="img/lavado.JPG" alt="pulido">
@@ -108,40 +163,12 @@
                 </div>
 
             </div>
-
-            <!-- Comente la seccion de imagen a la nueva agregue div para el detalle -->
-            <!-- <div class="grid-container">
-
-                <div class="gid-img"><img class="grid-img" src="img/puliendo adapt.PNG" alt="pulido"></div>
-                <video class="grid-img" autoplay muted loop>
-                    <source src="img/MercedesAmg.MP4" type="video/mp4">
-                </video>
-                <div class="gid-img"><img class="grid-img" src="img/preparacion p venta.JPG" alt="pulido"></div>
-                <div class="gid-img"><img class="grid-img" src="img/interior.PNG" alt="pulido"></div>
-                <div class="gid-img"><img class="grid-img" src="img/lavado.JPG" alt="pulido"></div>
-
-            </div> -->
-
-            <!-- Modifique la seccion de las imagenes y comente el codigo anterior -->
-            <!--<div class="grid-container">
-                <img src="img/puliendo.PNG" alt="pulido" width="400" height="379">
-            </div>
-
-            <div class="grid-container" >
-                <img src="img/imag2.JPG" alt="tapizado" width="400" height="379">
-            </div>
-
-            <div class="grid-container">
-                <img src="img/imag3.JPG" alt="encerado" width="400" height="379">
-            </div>
-
-            <div class="grid-container">
-                <img src="img/imag4.JPG" alt="lavado" width="400" height="379">
-            </div> -->
+-->
+ 
         </section><br><br>
 
         <!-- Redes Sociales- Instagram -->
-        <section>
+        <section class="instagram">
             <h3>Descubre nuestros trabajos en... </h3>
             <br>
             <div class="img-insta">
@@ -152,7 +179,7 @@
         <br><br>
 
         <!-- Sobre Nosotros- Ubicación -->
-        <section>
+        <section class="nosotros">
             <div id="nosotros">
                 <h2>Sobre Nosotros</h2>
             </div><br>
@@ -272,7 +299,7 @@
 
     </main>
 
-    <footer id="footer">
+    <footer id="footer" class="footer">
         <div id="img-inst-logo">
             <a id="img-inst" href="https://www.instagram.com/efcarcare/"><img src="img/IMG_8988.JPG" alt="logo-qr"
                     width="150"></a>
