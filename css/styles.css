@@ -546,6 +546,27 @@ header .div.contenedor nav {
 }
 
 @media only screen and (max-width: 769px) {
+
+    .form-contact-data{
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 50px;
+        padding: 20px; 
+    }
+
+    .form-contact-data-1{
+        padding: 10px;
+
+        width: 100%;
+        };
+
+    .form-contact-data-2{
+        padding: 10px;
+        
+        width: 100%;
+        };
+    
     header nav.logo {
         margin: 0;
     }
