@@ -57,9 +57,7 @@ ul {
     background-color: #000000c5;
     display: flex;
     align-items: center;
-    /* position: -webkit-sticky;
-    position: sticky; */
-    /* top: 0; */
+
 }
 
 li {
@@ -109,7 +107,7 @@ h2 {
     text-align: center;
     padding: 10px;
     margin: 5px;
-    font-size: 2vw;
+    font-size: 3vw;
     font-family: 'dodge3';
 }
 
@@ -214,6 +212,7 @@ h1 {
 }
 
 .container{
+    margin:auto;
     display: grid;
     align-self: center;
     grid-template-areas: 
@@ -266,6 +265,8 @@ h1 {
     border-radius: 30px;
     border: 2px solid pink;
 }
+
+
 /* SECCION NOSOTROS*/
 .nosotros{
     position: static;
@@ -284,6 +285,7 @@ h1 {
     background-position-y: 75%;
     background-size: cover;
 
+
 }
 
 .form-contact-data {
@@ -295,8 +297,11 @@ h1 {
     display: flex;
 }
 
-.form-port {
+.form-port {    
+   
     background: linear-gradient(to right, rgb(0, 0, 0), rgba(32, 32, 32, 0.815));
+
+    
 }
 
 label {
