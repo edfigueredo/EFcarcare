@@ -477,16 +477,16 @@ input {
 /* Se utilizo Transition para efecto en las imagenes */
 .gid-img:hover {
     opacity: 0.9;
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
 }
 
 .gid-img {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     /* position: absolute; */
     font-weight: bold;
-    padding: 3px;
+    padding: 5px;
     float: left;
     -webkit-transition-property: -webkit-transform 1s, width 1s, height 1s, transform 1s, background 1s, opacity 1s;
     transition-property: width, height, transform, background, opacity;
@@ -504,15 +504,15 @@ input {
 
 .detail-title {
     color: white;
-    margin: 5px 0px 0px 0px;
-    line-height: 1.2em;
+    margin: 3px 0px 0px 0px;
+    line-height: 1.3em;
 }
 
-.item-detail-title {
+#item-detail-title {
     font-family: 'poiret';
-    text-align: center;
+    text-align: start;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     margin: 3px 0px;
 }
 
@@ -653,3 +653,148 @@ input {
     100% { transform: translate(0, 0) rotate(0deg); }
 
 } */
+
+/* MENU HAMBURGUESA */
+header .div.contenedor {
+    place-content: flex-start;
+}
+
+header .div.contenedor nav {
+    width: 70%;
+    display: flex;
+    place-content: space-between;
+}
+
+#menu, #menu-check {
+    display: none;
+}
+
+
+/* MEDIAQUERIES */
+@media only screen and (mix-width: 768px) and (max-width: 900px) {
+    header div.contenedor, header div.contenedor ul, header div.contenedor ul li {
+        display: inline;
+    }
+
+    header div.contenedor nav {
+        width: 100%;
+        display: inline;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    header nav.logo {
+        margin: 0;
+    }
+
+    header nav a {
+        padding: 0;
+    }
+
+    header div.contenedor {
+        display: flex;
+        place-content: space-between;
+    }
+
+    #menu-check:not(:checked) ~ nav {
+        display: none;
+    }
+
+    #menu-check::checked ~ nav {
+        display: block;
+    }
+
+    #menu {
+        display: block;
+        color: rgb(200, 194, 7);
+        background-color: rgb(12, 12, 12);
+        font-size: 1.2em;
+        font-weight: bold;
+        border: 3px solid #6e4908;
+        border-radius: 0.3em;
+        position: absolute;
+        right: 0.5em;
+        top: 0.5em;
+        z-index: 9999;
+    }
+
+    #menu:hover {
+        color: #828206;
+        background-color: rgb(183, 117, 3);
+    }
+
+    #menu-cerrar {
+        display: none;
+    }
+
+    #menu-check:checked ~ lavel #menu-abrir {
+        display: none;
+    }
+
+    #menu-check:checked ~ lavel #menu-cerrar {
+        display: block;
+    }
+
+    header div.contenedor nav{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        background-color: rgb(10, 10, 10);
+        padding-top: 0.2em;
+        padding-right: 0.2em;
+        opacity: 0.8;
+        color: white;
+        font-size: 1.4em;
+    }
+
+    header div.contenedor nav ul a {
+        color: #6e4908;
+        background: none;
+    }
+
+    header div.contenedor nav ul, header div.contenedor nav ul li {
+        display: block;
+        text-align: right;
+        padding: 0.4em;
+    }
+
+    main {
+        text-align: center;
+    }
+
+    h1  {
+        font-size: 1.8em;
+    }
+
+    
+    main .container{
+        display: block;
+        padding: 0px;
+        width: 70%;
+    }
+
+    .grid-img {
+        height: 250px;
+        margin: 20px;
+    }
+    
+    
+    .gid-img {
+        width: 300px;
+        height: 300px;
+        padding: 5px;
+        transition: none;
+    }
+        
+    .detail-title {
+        margin: 0;
+    }
+    
+    #item-detail-title {
+        text-align: center;
+        font-size: 1em;
+        margin: 0;
+    }
+    
+}
