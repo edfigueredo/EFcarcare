@@ -1,5 +1,5 @@
 // Scritp para informar que fue subido
-alert('Estoy funcionando');
+//alert('Estoy funcionando');
 
 let userFile =  document.querySelector('.upload-arch');
 
