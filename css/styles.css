@@ -24,9 +24,9 @@ body {
 }
 
 .logo {
-    height: 215px;
-    width: 250px;
-    margin: 20px;
+    height: 350px;
+    width: 100%;
+    margin: 0;
     overflow: hidden;
     position: relative;
     top: -110px;
@@ -258,8 +258,7 @@ video {
     object-fit: cover;
     border-radius: 10px;
     margin: 20px;
-
-
+    width: 100%;
 }
 
 
@@ -279,6 +278,11 @@ video {
 .nosotros{
     position: static;
     margin: 0 10%; 
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
 }
 
 /* FORMULARIO ESTILOS */
@@ -532,6 +536,20 @@ input {
 }
  /* Fooooter*/
  
+/* Redes Sociales al margen derecho */
+.sociales {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 1%;
+    bottom: 50%;
+}
+
+.socicon {
+    width: 2rem;
+    height: 2rem;
+}
+
 
 /* MENU HAMBURGUESA */
 .contenedor{
@@ -575,7 +593,6 @@ header .div.contenedor nav {
         width: 100%;
         display: inline;
     }
-    
     
 }
 
@@ -695,6 +712,7 @@ header .div.contenedor nav {
     .grid-img {
         height: 250px;
         margin: 20px;
+        width: 70%;
     }
     
     
