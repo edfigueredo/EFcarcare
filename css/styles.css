@@ -507,6 +507,8 @@ input {
     color: white;
     font-size: 16px;
     margin: 3px 0px;
+    text-align: center;
+    margin: 0;
 }
 
 /* Agregue diseño para el boton de Browse y color para el input de mensaje */
@@ -703,11 +705,7 @@ header .div.contenedor nav {
         margin: 0;
     }
     
-    #item-detail-title {
-        text-align: center;
-        font-size: 1em;
-        margin: 0;
-    }
+
    .footer{
  
     display: flex;

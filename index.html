@@ -205,20 +205,20 @@
 
                             <h3 class="title-service">Servicios Interesados</h3>
                             <div class="servicios-interez">
-                                <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
+                                <label for="modelo1" id="modelo1"> Corrección de barniz - Tratamientos.</label>
                                 <input type="checkbox" id="modelo1" name="tipo-auto" value="Corrección de barniz - Tratamientos">
                                 
-                                <label for="modelo2"> Ploteos - Película protectora PPF.</label>
-                                <input type="checkbox" id="modelo1" name="tipo-auto" value="Ploteos - Película protectora PPF">
+                                <label for="modelo2" id="modelo2"> Ploteos - Película protectora PPF.</label>
+                                <input type="checkbox" id="modelo2" name="tipo-auto" value="Ploteos - Película protectora PPF">
                                 
-                                <label for="modelo3"> Limpieza interior - motores - chasis.</label>
-                                <input type="checkbox" id="modelo1" name="tipo-auto" value="Limpieza interior - motores - chasis">
+                                <label for="modelo3" id="modelo3"> Limpieza interior - motores - chasis.</label>
+                                <input type="checkbox" id="modelo3" name="tipo-auto" value="Limpieza interior - motores - chasis">
                                 
-                                <label for="modelo4"> Lavado detallados.</label>
-                                <input type="checkbox" id="modelo1" name="tipo-auto" value="Lavado detallados">
+                                <label for="modelo4" id="modelo4"> Lavado detallados.</label>
+                                <input type="checkbox" id="modelo4" name="tipo-auto" value="Lavado detallados">
                                 
-                                <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
-                                <input type="checkbox" id="modelo1" name="tipo-auto" value="Reparación, pintura de llantas o piezas">
+                                <label for="modelo5" id="modelo5"> Reparación, pintura de llantas o piezas.</label>
+                                <input type="checkbox" id="modelo5" name="tipo-auto" value="Reparación, pintura de llantas o piezas">
                                 
                             </div>
 
@@ -236,20 +236,21 @@
 
 
                             <div class="adj-file">
-                                <label>
+                                <label for="archiv">
                                     Ingrese una imagen del vehículo <br>
-                                    <label for="archiv">
-                                        <img src="/img/submit.png" alt="subir">
-                                        <h3 id="upload-img"></h3>
-                                        <br>
-                                    </label>
+                                   
+                                        <img src="/img/submit.png" alt="subir"><br>
+                                        <small id="upload-img">su seleccion es...</small>
+                                        
+                                    
                                 </label>
+                                
                                 <input type="file" name="myfile" id="archiv" class="upload-arch">
                             </div>
 
-
+                            <h3 ><br>Desea insertar un comentario</h3>    
                             <textarea class="text-area" name="message" rows="10" cols="30"
-                                placeholder="Agregue un comentario aqui..." no-re>
+                                placeholder="Agregue un comentario aqui..." >
                             </textarea>
                             
                             
@@ -268,7 +269,7 @@
     <footer id="footer" class="footer">
 
         <div class="logo-footer">
-            <a id="img-efcarcare" href="#"><img src="img/logo blanco.JPG" alt="logo-ef-car-blanco" width="150"></a>
+            <a id="img-efcarcare" href="#"><img src="img/logo-blanco.JPG" alt="logo-ef-car-blanco" width="150"></a>
         </div>       
         
 
