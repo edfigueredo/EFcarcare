@@ -23,10 +23,19 @@ body {
     margin: auto;
 }
 
-.logo {
+/* .logo {
     height: 350px;
     width: 100%;
     margin: 0;
+    overflow: hidden;
+    position: relative;
+    top: -110px;
+} */
+
+.logo {
+    height: 250px;
+    width: 250px;
+    margin: 20px;
     overflow: hidden;
     position: relative;
     top: -110px;
