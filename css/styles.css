@@ -131,6 +131,7 @@ p {
 
 #banner img {
     height: 889px;
+    width: 100%;
     object-fit: contain;
 }
 
@@ -233,6 +234,11 @@ h1 {
     grid-area: foto-izq;
 
 }
+
+video {
+    width: 300px;
+}
+
 .grid-video{
     grid-area: foto-video;
 
@@ -499,9 +505,6 @@ input {
     color: white;
     margin: 3px 0px 0px 0px;
     line-height: 1.3em;
-}
-
-#item-detail-title {
     font-family: 'poiret';
     text-align: start;
     color: white;
@@ -510,6 +513,7 @@ input {
     text-align: center;
     margin: 0;
 }
+
 
 /* Agregue diseño para el boton de Browse y color para el input de mensaje */
 .text-area {
