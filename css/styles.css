@@ -23,13 +23,15 @@ body {
     margin: auto;
 }
 
+
+
 .logo {
-    height: 350px;
-    width: 100%;
-    margin: 0;
+    height: 400px;
+    width: 300px;
+    margin: 20px;
     overflow: hidden;
     position: relative;
-    top: -110px;
+    top: -80px;
 }
 
 /* ESTILOS Y FORMATO AL MENÚ*/
