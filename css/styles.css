@@ -140,7 +140,7 @@ p {
 .leyenda-banner {
     position: relative;
     top: -200px;
-    background-image: url('/img/mozaico\ gris.jpg');
+    background-image: url('/img/mozaico-gris.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     animation-name: carga;
@@ -221,9 +221,9 @@ h1 {
     display: grid;
     align-self: center;
     grid-template-areas:
-        'servicios servicios servicios'
-        'foto-izq foto-video foto-der'
-        'foto-izq foto-video foto-der';
+                        'servicios servicios servicios'
+                        'foto-izq foto-video foto-der'
+                        'foto-izq foto-video foto-der';
     grid-gap: 10px;
     /**background-color: grey;**/
     padding: 20px;
@@ -481,7 +481,7 @@ input {
     background-color: rgba(110, 110, 110, 0);
     width: 400px;
 }
-.text-area
+
 
 /* Se utilizo Transition para efecto en las imagenes */
 .gid-img:hover {
