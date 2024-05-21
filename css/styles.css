@@ -140,7 +140,7 @@ p {
 .leyenda-banner {
     position: relative;
     top: -200px;
-    background-image: url('/img/mozaico\ gris.jpg');
+    background-image: url('img/mozaico-gris.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     animation-name: carga;
