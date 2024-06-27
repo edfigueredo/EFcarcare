@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.ico">
+    <link rel="icon" href="../img/logo.JPG">
+    <link rel="stylesheet" href="../css/styles.css">
+    <!-- Script de Fontawesome -->
+    <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
+    <!-- Titulo -->
+    <title>EF Car Care</title>
+
+</head>
+<header>
+    <div class="menu" >
+    <ul>
+            <li>
+                <div>
+                <img src="../img/logo.png" width="200px">
+                </div>
+            </li>
+    
+        
+            <li><a href="#solicitudes">Nuevos</a></li>
+            <li><a href="#turnos">Turnos</a></li>
+            <li><a href="#nuevo">Nuevo</a></li>
+            
+        </ul>
+    </div>
+</header>
+<body>
+    <section>
+        <div id="solicitudes" class="servicios-productos">
+            <h2>Nuevas Solicitudes</h2>
+            <br>
+        </div>
+    </section>
+    <section>
+        <div id="turnos" class="servicios-productos">
+            <h2>Turnos</h2>
+            <br>
+        </div>
+    </section>
+    <section>
+        <div id="nuevos" class="servicios-productos">
+            <h2>Nuevo</h2>
+          
+        </div>
+       
+            <!-- Container de formulario -->
+            <div class="form-contact">
+
+                <div class="form-port">
+                    <!-- Container de campos del formulario -->
+                    <form id="myForm" class="form-contact-data" action="https://formsubmit.co/soyo123@gmail.com "
+                        method="post" autocomplete="off">
+                        <div class="form-contact-data form-contact-data-1">
+
+                            <label for="nombre-apellido" class="label-nombre">Ingrese Nombre</label>
+                            <input type="text" class="dato input-nombre" name="nombre-apellido" id="nombre-apellido"
+                                placeholder="Nombre y Apellido" required>
+
+                            <label for="telefono">Ingrese Numero de contacto</label>
+                            <input type="tel" id="telefono" class="dato input-contacto" name="phone"
+                                placeholder="N° de Celular de 7 a 11" required>
+
+                            <h3 class="title-service">Servicios Interesados</h3>
+                            <div class="servicios-interez">
+                                <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
+                                <input type="checkbox" id="modelo1" name="tipo-auto"
+                                    value="Corrección de barniz - Tratamientos">
+
+                                <label for="modelo2"> Ploteos - Película protectora PPF.</label>
+                                <input type="checkbox" id="modelo2" name="tipo-auto"
+                                    value="Ploteos - Película protectora PPF">
+
+                                <label for="modelo3"> Limpieza interior - motores - chasis.</label>
+                                <input type="checkbox" id="modelo3" name="tipo-auto"
+                                    value="Limpieza interior - motores - chasis">
+
+                                <label for="modelo4"> Lavado detallados.</label>
+                                <input type="checkbox" id="modelo4" name="tipo-auto" value="Lavado detallados">
+
+                                <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
+                                <input type="checkbox" id="modelo5" name="tipo-auto"
+                                    value="Reparación, pintura de llantas o piezas">
+
+                            </div>
+
+                        </div>
+                        <div class="form-contact-data form-contact-data-2">
+
+                            <label for="cars">Ingrese tipo de vehiculo</label>
+                            <select id="cars" class="select-vehiculo">
+                                <option value="tipo-vehiculo">Tipo de vehiculo</option>
+                                <option value="pickup-suv"> Pick up - Suv</option>
+                                <option value="sedan"> Sedan</option>
+                                <option value="embarcacion"> Embarcación</option>
+                                <option value="motocicleta-cuatriciclo"> Motocicleta - Cuatriciclo</option>
+                            </select>
+
+
+                            <div class="adj-file">
+                                <label for="archiv">
+                                    Ingrese una imagen del vehículo <br>
+
+                                    <img src="img/submit.png" alt="subir"><br>
+                                    <small id="upload-img">su seleccion es...</small>
+
+
+                                </label>
+
+                                <input type="file" name="myfile" id="archiv" class="upload-arch">
+                            </div>
+
+                            <h3><br>Desea insertar un comentario</h3>
+                            <textarea class="text-area" name="message" rows="10" cols="30"
+                                placeholder="Agregue un comentario aqui..." ></textarea>
+
+
+                            <button id="boton">Generar turno</button>
+                        </div>
+                        <input type="hidden" name="_next" value="http://127.0.0.1:5503/index.html">
+                        <input type="hidden" name="_captcha" value="false">
+                    </form>
+                </div>
+
+            </div>
+       
+    </section>
+
+
+
+</body>
