@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'dodge3';
-    src: url(/fonts/Dodgv2ci.ttf);
+    src: url(../fonts/Dodgv2ci.ttf);
 }
 
 @font-face {
     font-family: 'poiret';
-    src: url(/fonts/PoiretOne-Regular.ttf);
+    src: url(../fonts/PoiretOne-Regular.ttf);
 }
 
 * {
@@ -141,7 +141,7 @@ p {
 .leyenda-banner {
     position: relative;
     top: -200px;
-    background-image: url('img/mozaico-gris.jpg');
+    background-image: url('../img/mozaico-gris.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     animation-name: carga;
@@ -222,16 +222,16 @@ h1 {
     display: grid;
     align-self: center;
     grid-template-areas:
-        'servicios servicios servicios'
-        'foto-izq foto-video foto-der'
-        'foto-izq foto-video foto-der';
+                        'servicios servicios servicios'
+                        'foto-izq foto-video foto-der'
+                        'foto-izq foto-video foto-der';
     grid-gap: 10px;
     /**background-color: grey;**/
     padding: 20px;
     width: 90%;
     align-content: center;
     color: #6e4908;
-
+    
 }
 
 .grid-foto-izq {
@@ -435,19 +435,23 @@ input {
     height: 30px;
     font-family: 'poiret';
     color: rgb(255, 255, 255);
+
 }
 
 .select-vehiculo:focus {
     transition: border 0.4s ease-in-out;
-    border-bottom: 2px solid rgb(181, 51, 51);
+    border-bottom: none;
     font-family: 'poiret';
     font-size: 0.9rem;
     color: rgb(255, 255, 255);
+
+
 }
 
 .select-vehiculo:valid {
     font-size: 1rem;
     font-family: 'poiret';
+    border-bottom: 2px solid white;
 
 }
 
@@ -541,7 +545,20 @@ input {
     margin-top: 10px;
     font-family: 'poiret';
     border-radius: 8px;
+}
+
+/* ESTILOS ACTIVACION SEGUN VALIDACION */
+
+.no-activation{
+    opacity: 0.4;
+}
+.no-activation:hover{
+    cursor: not-allowed;
+}
+
+.activation:hover{
     cursor: pointer;
+    border: 2px solid rgba(149, 255, 0, 0.434);
 }
 
 /* Fooooter*/
