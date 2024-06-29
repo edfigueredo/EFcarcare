@@ -50,7 +50,56 @@ class Turno:
         #cierra el cursor y abre uno nuevo con el parametro diccionario=true
         self.cursor.close()
         self.cursor=self.conn.cursor(dictionary=True)
-    
+
+#----------------------------------
+#    Agregar Turno
+#----------------------------------
+
+def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
+     sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+     valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora)
+     self.cursor.execute(sql,valores)#ejecuta
+     self.conn.commit()
+     return self.cursor.lastrowid #nos devuelve la ultima id creada
+
+#-----------------------------------
+#     Consultar turno
+#-----------------------------------
+
+def consulta_turno(self,id_turno):
+    #consultamos un turno
+    self.cursor.execute(f"SELECT * FROM turnos WHERE id_turno={id_turno}")
+    return self.cursor.fetchone()   #devuelve el registro uno solo
+
+#-----------------------------------
+#     Modificar Turno
+#-----------------------------------   
+def modificar_turno(self, id_turno, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
+     sql="UPDATE turnos SET nombre=%S,celular=%S,vehiculo=%S,patente=%S,servicio=%S,foto=%S,fecha=%S,hora=%S WHERE id_turno=%S"
+     valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora, id_turno)
+     self.cursor.execute(sql,valores)#ejecuta
+     self.conn.commit()
+     return self.cursor.rowcount > 0 #cantidad de columnas cambiadas
+
+#-----------------------------------
+#     Modificar Turno
+#-----------------------------------   
+def listar_turnos(self):
+     self.cursor.execute("SELECT * FROM turnos WHERE fecha >= CURDATE();")
+     turnos=self.cursor.fetchall() #devuelve todos los resultados
+     return turnos
+
+#-----------------------------------
+#     eliminar Turno
+#-----------------------------------   
+
+def eliminar_turno(self, id_turno):
+     self.cursor.execute(f"DELETE FROM turnos WHERE id_turno={id_turno}")
+     self.cursor.commit()
+     return self.cursor.rowcount >0 #si devuelve cero es que no borro nada
+
+
+
 #-----------------------------------
 #   cuerpo del programa"
 #-----------------------------------
