@@ -1,9 +1,33 @@
 import mysql.connector
 import mysql.connector.errorcode
 
-#creo el constructor
+#----------------------------------------------------------------
+#copie tal cual el proyecto
+
+# Instalar con pip install Flask
+from flask import Flask, request, jsonify, render_template
+
+from flask import request
+
+# Instalar con pip install flask-cors
+from flask_cors import CORS
+# Si es necesario, pip install Werkzeug
+from werkzeug.utils import secure_filename
+
+# No es necesario instalar, es parte del sistema standard de Python
+import os
+import time
+#--------------------------------------------------------------------
+
+#creamos un objeto de flask para usar sus metodos
+
+app = Flask(__name__) #podes llamar como quieras usamos app
+CORS(app)             # Esto habilitará CORS para todas las rutas
+
 
 class Turno:
+
+#creo el constructor
     def __init__ (self,host, user, password,database):
         """
         Args
@@ -13,17 +37,17 @@ class Turno:
         database: el nombre de la bd
         """
         #establecemos la coneccion
-        self.conn = mysql.connector.conect(
-                host=host,
-                user=user,
-                password=password
+        self.conn = mysql.connector.connect(
+            host=host,
+            user=user,
+            password=password
         )  
-        #creo el cursor
-        self.curso=self.conn.cursor()
+    #creo el cursor
+        self.cursor=self.conn.cursor()
 
-        #creoamos o conectamos a la bd
+    #creoamos o conectamos a la bd
         try:
-            self.cursor.execute(f"USE{database}")
+            self.cursor.execute(f"USE {database}")
         except mysql.connector.Error as err:
             #si el error es xq la bd no existe la creo
             if err.errno==mysql.connector.errorcode.ER_BAD_DB_ERROR:
@@ -33,7 +57,7 @@ class Turno:
                     raise err
             
         #creo la bd
-        self.cursor.execute(''' CREATE TABLE `turnos`(
+        self.cursor.execute(''' CREATE TABLE IF NOT EXISTS `turnos`(
                                 id_turno INT  PRIMARY KEY AUTO_INCREMENT,
                                 nombre VARCHAR(40) NOT NULL,
                                 celular VARCHAR(20) NOT NULL,
@@ -51,52 +75,60 @@ class Turno:
         self.cursor.close()
         self.cursor=self.conn.cursor(dictionary=True)
 
-#----------------------------------
-#    Agregar Turno
-#----------------------------------
+    #----------------------------------
+    #    Agregar Turno
+    #----------------------------------
 
-def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
-     sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
-     valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora)
-     self.cursor.execute(sql,valores)#ejecuta
-     self.conn.commit()
-     return self.cursor.lastrowid #nos devuelve la ultima id creada
+    def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
+        sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+        valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora)
+        self.cursor.execute(sql,valores)#ejecuta
+        self.conn.commit()
+        return self.cursor.lastrowid #nos devuelve la ultima id creada
 
-#-----------------------------------
-#     Consultar turno
-#-----------------------------------
+    #-----------------------------------
+    #     Consultar turno
+    #-----------------------------------
 
-def consulta_turno(self,id_turno):
-    #consultamos un turno
-    self.cursor.execute(f"SELECT * FROM turnos WHERE id_turno={id_turno}")
-    return self.cursor.fetchone()   #devuelve el registro uno solo
+    def consulta_turno(self,id_turno):
+        #consultamos un turno
+        self.cursor.execute(f"SELECT * FROM turnos WHERE id_turno={id_turno}")
+        return self.cursor.fetchone()   #devuelve el registro uno solo
 
-#-----------------------------------
-#     Modificar Turno
-#-----------------------------------   
-def modificar_turno(self, id_turno, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
-     sql="UPDATE turnos SET nombre=%S,celular=%S,vehiculo=%S,patente=%S,servicio=%S,foto=%S,fecha=%S,hora=%S WHERE id_turno=%S"
-     valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora, id_turno)
-     self.cursor.execute(sql,valores)#ejecuta
-     self.conn.commit()
-     return self.cursor.rowcount > 0 #cantidad de columnas cambiadas
+    #-----------------------------------
+    #     Modificar Turno
+    #-----------------------------------   
+    def modificar_turno(self, id_turno, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
+        sql="UPDATE turnos SET nombre=%s,celular=%s,vehiculo=%s,patente=%s,servicio=%s,foto=%s,fecha=%s,hora=%s WHERE id_turno=%s"
+        valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora, id_turno)
+        self.cursor.execute(sql,valores)#ejecuta
+        self.conn.commit()
+        return self.cursor.rowcount > 0 #cantidad de columnas cambiadas
 
-#-----------------------------------
-#     Modificar Turno
-#-----------------------------------   
-def listar_turnos(self):
-     self.cursor.execute("SELECT * FROM turnos WHERE fecha >= CURDATE();")
-     turnos=self.cursor.fetchall() #devuelve todos los resultados
-     return turnos
+    #-----------------------------------
+    #     Listar Turnos
+    #-----------------------------------   
+    def listar_turnos(self):
+        self.cursor.execute("SELECT * FROM turnos WHERE fecha >= CURDATE();")
+        turnos=self.cursor.fetchall() #devuelve todos los resultados
+        return turnos
 
-#-----------------------------------
-#     eliminar Turno
-#-----------------------------------   
+    #-----------------------------------
+    #     Listar Nuevas Solciitudes
+    #-----------------------------------   
+    def listar_solicitudes(self):
+        self.cursor.execute("SELECT * FROM turnos WHERE fecha IS NULL;")
+        turnos=self.cursor.fetchall() #devuelve todos los resultados
+        return turnos
 
-def eliminar_turno(self, id_turno):
-     self.cursor.execute(f"DELETE FROM turnos WHERE id_turno={id_turno}")
-     self.cursor.commit()
-     return self.cursor.rowcount >0 #si devuelve cero es que no borro nada
+    #-----------------------------------
+    #     eliminar Turno
+    #-----------------------------------   
+
+    def eliminar_turno(self, id_turno):
+        self.cursor.execute(f"DELETE FROM turnos WHERE id_turno={id_turno}")
+        self.conn.commit()
+        return self.cursor.rowcount > 0 #si devuelve cero es que no borro nada
 
 
 
@@ -105,3 +137,20 @@ def eliminar_turno(self, id_turno):
 #-----------------------------------
 
 turno=Turno(host='localhost',user='admin',password='admin',database='efcarecar')
+
+#-----------------------listado de turnos--------------
+@app.route("/turnos", methods=["GET"])#trae los turnos 
+def listar_turnos():
+    listado=turno.listar_turnos()
+    return jsonify(listado)
+
+
+
+
+
+
+#-----------------------
+#cierre de flask
+#-----------------------
+if __name__ == "__main__":
+    app.run(debug=True,port=5503)

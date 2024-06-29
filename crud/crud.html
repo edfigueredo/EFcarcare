@@ -23,9 +23,9 @@
             </li>
     
             
-            <li><a href="#solicitudes" style="color:  #6e4908">Nuevos</a></li>
+            <li><a href="#solicitudes" style="color:  #6e4908">Solicitudes</a></li>
             <li><a href="#turnos" style="color:  #6e4908">Turnos</a></li>
-            <li><a href="#nuevo" style="color:  #6e4908">Nuevo</a></li>
+            <li><a href="#nuevo" style="color:  #6e4908">Crear Turno</a></li>
             
         </ul>
     </div>
@@ -35,17 +35,27 @@
         <div id="solicitudes" class="servicios-productos">
             <h2>Nuevas Solicitudes</h2>
             <br>
+        </div >
+        
+        <div class="ventana" style="border: #6e4908;">
+        <iframe src="solicitudes.html"  height="400" ></iframe>
         </div>
+
     </section>
     <section>
         <div id="turnos" class="servicios-productos">
             <h2>Turnos</h2>
             <br>
         </div>
+
+        <div class="ventana"style="border: #6e4908;">
+            <iframe src="turnos.html" height="400" ></iframe>
+        </div>
+
     </section>
     <section>
         <div id="nuevos" class="servicios-productos">
-            <h2>Nuevo</h2>
+            <h2>Crear Turno</h2>
           
         </div>
        
@@ -54,8 +64,9 @@
 
                 <div class="form-port">
                     <!-- Container de campos del formulario -->
-                    <form id="myForm" class="form-contact-data" action="https://formsubmit.co/soyo123@gmail.com "
-                        method="post" autocomplete="off">
+                    <form id="altaTurno" class="form-contact-data" 
+                        method="post" autocomplete="off" enctype="multipart/form-data">
+                        
                         <div class="form-contact-data form-contact-data-1">
 
                             <label for="nombre-apellido" class="label-nombre">Ingrese Nombre</label>
@@ -123,10 +134,9 @@
                                 placeholder="Agregue un comentario aqui..." ></textarea>
 
 
-                            <button id="boton">Generar turno</button>
+                            <button type="submit" id="alta">Generar turno</button>
                         </div>
-                        <input type="hidden" name="_next" value="http://127.0.0.1:5503/index.html">
-                        <input type="hidden" name="_captcha" value="false">
+                        
                     </form>
                 </div>
 
@@ -137,3 +147,16 @@
 
 
 </body>
+<!-- Script JS  -->
+ 
+<script >
+     const URL= "http://127.0.0.1:500/"
+     document.getElementById('altaTurno').addEventListener('submit',fuction(event)){
+        event.preventDefault(); //evita que envie el form
+        
+        var formData=new FormData(this);
+
+
+
+     }
+</script>

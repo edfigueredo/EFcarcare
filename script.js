@@ -1,5 +1,7 @@
 let userFile = document.querySelector('.upload-arch');
 
+
+
 userFile.addEventListener('change', () => {
     document.querySelector('#upload-img').innerText = userFile.files[0].name;
 });
@@ -85,3 +87,4 @@ inputs.forEach(function (fueraDeCampo) {
         alert("Se envió correctamente")
      }
  })
+
