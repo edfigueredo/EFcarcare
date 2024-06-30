@@ -1,13 +1,11 @@
 import mysql.connector
-import mysql.connector.errorcode
+from mysql.connector import errorcode
 
-#----------------------------------------------------------------
+
 #copie tal cual el proyecto
 
 # Instalar con pip install Flask
 from flask import Flask, request, jsonify, render_template
-
-from flask import request
 
 # Instalar con pip install flask-cors
 from flask_cors import CORS
@@ -18,6 +16,21 @@ from werkzeug.utils import secure_filename
 import os
 import time
 #--------------------------------------------------------------------
+from datetime import datetime, timedelta
+#------------------------------------------------------
+#    funcion para tiem data a string
+#------------------------------------------------------
+
+
+def convertir_a_serializable(obj):
+    if isinstance(obj, (datetime, timedelta)):
+        return str(obj)
+    elif isinstance(obj, dict):
+        return {k: convertir_a_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convertir_a_serializable(i) for i in obj]
+    else:
+        return obj
 
 #creamos un objeto de flask para usar sus metodos
 
@@ -50,7 +63,7 @@ class Turno:
             self.cursor.execute(f"USE {database}")
         except mysql.connector.Error as err:
             #si el error es xq la bd no existe la creo
-            if err.errno==mysql.connector.errorcode.ER_BAD_DB_ERROR:
+            if err.errno==errorcode.ER_BAD_DB_ERROR:
                 self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database}")
                 self.conndatabase=database
             else:
@@ -136,13 +149,14 @@ class Turno:
 #   cuerpo del programa"
 #-----------------------------------
 
-turno=Turno(host='localhost',user='admin',password='admin',database='efcarecar')
+turno=Turno(host='localhost',user='admin',password='admin',database='efcarcare')
 
 #-----------------------listado de turnos--------------
-@app.route("/turnos", methods=["GET"])#trae los turnos 
+@app.route("/turnos", methods=["GET"])
 def listar_turnos():
-    listado=turno.listar_turnos()
-    return jsonify(listado)
+    listado = turno.listar_turnos()
+    listado_convertido = convertir_a_serializable(listado)
+    return jsonify(listado_convertido)
 
 
 
@@ -153,4 +167,4 @@ def listar_turnos():
 #cierre de flask
 #-----------------------
 if __name__ == "__main__":
-    app.run(debug=True,port=5503)
+    app.run(debug=True)
