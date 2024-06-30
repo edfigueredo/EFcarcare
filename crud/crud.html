@@ -7,6 +7,7 @@
     <link rel="icon" href="../img/logo.ico">
     <link rel="icon" href="../img/logo.JPG">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/crud.css">
     <!-- Script de Fontawesome -->
     <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
     <!-- Titulo -->
@@ -14,152 +15,162 @@
 
 </head>
 <header>
-    <div class="menu" >
-    <ul >
+    <div class="menu">
+        <ul>
             <li>
                 <div>
-                <img src="../img/logo.png" width="200px">
+                    <img src="../img/logo.png" width="200px">
                 </div>
             </li>
-    
-            
-            <li><a href="#solicitudes" style="color:  #6e4908">Solicitudes</a></li>
+
+
+            <li><a href="#solicitudes" style="color:  #6e4908">Nuevos</a></li>
             <li><a href="#turnos" style="color:  #6e4908">Turnos</a></li>
-            <li><a href="#nuevo" style="color:  #6e4908">Crear Turno</a></li>
-            
+            <li><a href="#nuevo" style="color:  #6e4908">Nuevo</a></li>
+
         </ul>
     </div>
 </header>
+
 <body>
+    <!-- Seccion de solicitud -->
     <section>
         <div id="solicitudes" class="servicios-productos">
             <h2>Nuevas Solicitudes</h2>
-            <br>
-        </div >
-        
-        <div class="ventana" style="border: #6e4908;">
-        <iframe src="solicitudes.html"  height="400" ></iframe>
-        </div>
-
-    </section>
-    <section>
-        <div id="turnos" class="servicios-productos">
-            <h2>Turnos</h2>
-            <br>
-        </div>
-
-        <div class="ventana"style="border: #6e4908;">
-            <iframe src="turnos.html" height="400" ></iframe>
-        </div>
-
-    </section>
-    <section>
-        <div id="nuevos" class="servicios-productos">
-            <h2>Crear Turno</h2>
-          
-        </div>
-       
-            <!-- Container de formulario -->
-            <div class="form-contact">
-
-                <div class="form-port">
-                    <!-- Container de campos del formulario -->
-                    <form id="altaTurno" class="form-contact-data" 
-                        method="post" autocomplete="off" enctype="multipart/form-data">
-                        
-                        <div class="form-contact-data form-contact-data-1">
-
-                            <label for="nombre-apellido" class="label-nombre">Ingrese Nombre</label>
-                            <input type="text" class="dato input-nombre" name="nombre-apellido" id="nombre-apellido"
-                                placeholder="Nombre y Apellido" required>
-
-                            <label for="telefono">Ingrese Numero de contacto</label>
-                            <input type="tel" id="telefono" class="dato input-contacto" name="phone"
-                                placeholder="N° de Celular de 7 a 11" required>
-
-                            <h3 class="title-service">Servicios Interesados</h3>
-                            <div class="servicios-interez">
-                                <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
-                                <input type="checkbox" id="modelo1" name="tipo-auto"
-                                    value="Corrección de barniz - Tratamientos">
-
-                                <label for="modelo2"> Ploteos - Película protectora PPF.</label>
-                                <input type="checkbox" id="modelo2" name="tipo-auto"
-                                    value="Ploteos - Película protectora PPF">
-
-                                <label for="modelo3"> Limpieza interior - motores - chasis.</label>
-                                <input type="checkbox" id="modelo3" name="tipo-auto"
-                                    value="Limpieza interior - motores - chasis">
-
-                                <label for="modelo4"> Lavado detallados.</label>
-                                <input type="checkbox" id="modelo4" name="tipo-auto" value="Lavado detallados">
-
-                                <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
-                                <input type="checkbox" id="modelo5" name="tipo-auto"
-                                    value="Reparación, pintura de llantas o piezas">
-
-                            </div>
-
-                        </div>
-                        <div class="form-contact-data form-contact-data-2">
-                            
-                            <label for="patente">Ingrese la patente</label>
-                            <input type="tel" id="patente" class="dato input-contacto" name="patente">
-
-                            <label for="cars">Ingrese tipo de vehiculo</label>
-                            <select id="cars" class="select-vehiculo">
-                                <option value="tipo-vehiculo">Tipo de vehiculo</option>
-                                <option value="pickup-suv"> Pick up - Suv</option>
-                                <option value="sedan"> Sedan</option>
-                                <option value="embarcacion"> Embarcación</option>
-                                <option value="motocicleta-cuatriciclo"> Motocicleta - Cuatriciclo</option>
-                            </select>
-
-
-                            <div class="adj-file">
-                                <label for="archiv">
-                                    Ingrese una imagen del vehículo <br>
-
-                                    <img src="img/submit.png" alt="subir"><br>
-                                    <small id="upload-img">su seleccion es...</small>
-
-
-                                </label>
-
-                                <input type="file" name="myfile" id="archiv" class="upload-arch">
-                            </div>
-
-                            <h3><br>Desea insertar un comentario</h3>
-                            <textarea class="text-area" name="message" rows="10" cols="30"
-                                placeholder="Agregue un comentario aqui..." ></textarea>
-
-
-                            <button type="submit" id="alta">Generar turno</button>
-                        </div>
-                        
-                    </form>
+            <div class="solicitudes">
+                <div class="solicitudes-col1">
+                    <h3 class=text-sol>Solicitante</h3>
+                    <h3 class=text-tipo>Tipo de vehiculo</h3>
+                    <h3 class=text-serv>Servicio solicitado</h3>
+                    <p class="list-serv">Listado de servicios</p>
                 </div>
-
+                <div class="solicitudes-col2">
+                    <h3>Cel contacto</h3>
+                    <div class="img-upload">
+                        <h3>imagen</h3>
+                    </div>
+                </div>
             </div>
-       
+            <h2>Observaciones</h2>
+            <textarea class="textarea-observ" name="observaciones" placeholder="Escriba aqui"></textarea>
+            <div class="btn-opciones">
+                <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar">
+                <img class="btn-calendario" src="../crud/img/calendario.com.png" alt="calendario">
+                <img class="btn-check" src="../crud/img/check.com.png" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- Seccion de turnos -->
+    <section class="servicios-productos-turnos">
+        <div id="turnos">
+            <h2>Turnos</h2>
+        </div>
+        <div class="turnos-panel">
+            <div class="turno-datos">
+                <h3 class="turnos-list-solicitante">Solicitante nombre-horario</h3>
+                <h3 class="turnos-list-telefono">Celular: xxxxxxxxxx</h3>
+                <p>Informacion sobre servicios y mas...</p>
+            </div>
+
+            <div class="btn-opciones-turnos">
+                <img class="btn--borrar" src="../crud/img/pngwing.com.png" alt="borrar">
+                <img class="btn--calendario" src="../crud/img/calendario.com.png" alt="calendario">
+                <img class="btn--check" src="../crud/img/check.com.png" alt="">
+            </div>
+        </div>
+
     </section>
 
-    <!-- Script JS  -->
-    <script >
-        const URL= "http://127.0.0.1:500/"
-        document.getElementById('altaTurno').addEventListener('submit', function(event){
-           event.preventDefault(); //evita que envie el form
-           
-           var formData=new FormData(this);
-   
-   
-   
-        })
-   </script>
+
+    <!-- Nuevo turnos -->
+    <section>
+        <div  class="servicios-productos">
+            <h2 id="nuevos">Nuevo</h2>
+
+        </div>
+
+        <!-- Container de formulario -->
+        <div class="form-contact">
+
+            <div class="form-port">
+                <!-- Container de campos del formulario -->
+                <form id="myForm" class="form-contact-data" action="https://formsubmit.co/soyo123@gmail.com "
+                    method="post" autocomplete="off">
+                    <div class="form-contact-data form-contact-data-1">
+
+                        <label for="nombre-apellido" class="label-nombre">Ingrese Nombre</label>
+                        <input type="text" class="dato input-nombre" name="nombre-apellido" id="nombre-apellido"
+                            placeholder="Nombre y Apellido" required>
+
+                        <label for="telefono">Ingrese Numero de contacto</label>
+                        <input type="tel" id="telefono" class="dato input-contacto" name="phone"
+                            placeholder="N° de Celular de 7 a 11" required>
+
+                        <h3 class="title-service">Servicios Interesados</h3>
+                        <div class="servicios-interez">
+                            <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
+                            <input type="checkbox" id="modelo1" name="tipo-auto"
+                                value="Corrección de barniz - Tratamientos">
+
+                            <label for="modelo2"> Ploteos - Película protectora PPF.</label>
+                            <input type="checkbox" id="modelo2" name="tipo-auto"
+                                value="Ploteos - Película protectora PPF">
+
+                            <label for="modelo3"> Limpieza interior - motores - chasis.</label>
+                            <input type="checkbox" id="modelo3" name="tipo-auto"
+                                value="Limpieza interior - motores - chasis">
+
+                            <label for="modelo4"> Lavado detallados.</label>
+                            <input type="checkbox" id="modelo4" name="tipo-auto" value="Lavado detallados">
+
+                            <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
+                            <input type="checkbox" id="modelo5" name="tipo-auto"
+                                value="Reparación, pintura de llantas o piezas">
+
+                        </div>
+
+                    </div>
+                    <div class="form-contact-data form-contact-data-2">
+
+                        <label for="cars">Ingrese tipo de vehiculo</label>
+                        <select id="cars" class="select-vehiculo">
+                            <option value="tipo-vehiculo">Tipo de vehiculo</option>
+                            <option value="pickup-suv"> Pick up - Suv</option>
+                            <option value="sedan"> Sedan</option>
+                            <option value="embarcacion"> Embarcación</option>
+                            <option value="motocicleta-cuatriciclo"> Motocicleta - Cuatriciclo</option>
+                        </select>
+
+
+                        <div class="adj-file">
+                            <label for="archiv">
+                                Ingrese una imagen del vehículo <br>
+
+                                <img src="img/submit.png" alt="subir"><br>
+                                <small id="upload-img">su seleccion es...</small>
+
+
+                            </label>
+
+                            <input type="file" name="myfile" id="archiv" class="upload-arch">
+                        </div>
+
+                        <h3><br>Desea insertar un comentario</h3>
+                        <textarea class="text-area" name="message" rows="10" cols="30"
+                            placeholder="Agregue un comentario aqui..."></textarea>
+
+
+                        <button id="boton">Generar turno</button>
+                    </div>
+                    <input type="hidden" name="_next" value="http://127.0.0.1:5503/index.html">
+                    <input type="hidden" name="_captcha" value="false">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
 
 
 </body>
-
-</html>
-
- 
