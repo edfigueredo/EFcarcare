@@ -158,7 +158,12 @@ def listar_turnos():
     listado_convertido = convertir_a_serializable(listado)
     return jsonify(listado_convertido)
 
-
+#-----------------------listado de solicitudes--------------
+@app.route("/solicitudes", methods=["GET"])
+def listar_solicitud():
+    listado = turno.listar_solicitudes()
+    listado_convertido = convertir_a_serializable(listado)
+    return jsonify(listado_convertido)
 
 
 
