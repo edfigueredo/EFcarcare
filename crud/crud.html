@@ -159,14 +159,13 @@
                         </div>
 
                         <h3><br>Desea insertar un comentario</h3>
-                        <textarea class="text-area" name="message" rows="10" cols="30"
+                        <textarea class="text-area" name="message" rows="10" cols="30" id="comentario"
                             placeholder="Agregue un comentario aqui..."></textarea>
 
 
                         <button id="boton">Generar turno</button>
                     </div>
-                    <input type="hidden" name="_next" value="http://127.0.0.1:5503/index.html">
-                    <input type="hidden" name="_captcha" value="false">
+
                 </form>
             </div>
 
@@ -178,10 +177,35 @@
 
 
         const URL = "http://127.0.0.1:5500/"
-        document.getElementById('altaTurno').addEventListener('submit', function (event) {
+        document.getElementById('boton').addEventListener('submit', function (event) {
         event.preventDefault(); //evita que envie el form
 
         var formData = new FormData(this);
+        
+        fetch(URL+'turnos',{
+            method: 'POST',
+            body: 'formData'
+        })
+            .then(function(data){
+                alert('agendado!!!');
+            })
+
+            .catch(function(error){
+                alert('Error al generar el turno');
+            })
+
+            .finally(function(){
+                document.getElementById('nombre-apellido').value="";
+                document.getElementById('telefono').value="";
+                document.getElementById('modelo1').value="";
+                document.getElementById('modelo2').value="";
+                document.getElementById('modelo3').value="";
+                document.getElementById('modelo4').value="";
+                document.getElementById('modelo5').value="";
+                document.getElementById('patente').value="";
+                document.getElementById('upload-img').value="";
+                document.getElementById('comentario').value="";
+            })
 
         })
 
