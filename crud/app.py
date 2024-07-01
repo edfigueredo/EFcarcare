@@ -151,16 +151,28 @@ class Turno:
 
 turno=Turno(host='localhost',user='admin',password='admin',database='efcarcare')
 
-#-----------------------listado de turnos--------------
+#-----------------------listado de turnos----------------
 @app.route("/turnos", methods=["GET"])
 def listar_turnos():
     listado = turno.listar_turnos()
     listado_convertido = convertir_a_serializable(listado)
     return jsonify(listado_convertido)
 
+#-----------------------listado de solicitudes--------------
+@app.route("/solicitudes", methods=["GET"])
+def listar_solicitud():
+    listado = turno.listar_solicitudes()
+    listado_convertido = convertir_a_serializable(listado)
+    return jsonify(listado_convertido)
 
+#---------------------- buscar turno ------------------------
+@app.route("/buscar/<int:id_turno>", methods=["GET"])
+def buscar_turno(id_turno):
+    busqueda = turno.consulta_turno(id_turno)
+    listado_convertido = convertir_a_serializable(busqueda)
+    return jsonify(listado_convertido)
 
-
+#---------------------- 
 
 
 #-----------------------
