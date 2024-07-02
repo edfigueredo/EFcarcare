@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/crud.css">
+    <!-- Script de Fontawesome -->
+    <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
+    <!-- Título -->
+    <title>EF Car Care</title>
+</head>
+
+<body>
+    <table id="solicitudes-table" style="color: silver ;"> <!-- Se crea una tabla para mostrar los productos. -->
+        <thead> <!-- Encabezado de la tabla con columnas para nombre, celular, servicios, vehículo y acciones. -->
+            <tr>
+                <th >Nombre</th>
+                <th>Celular</th>
+                <th>Servicios</th>
+                <th>Vehículo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const URL = "http://127.0.0.1:5000/";
+
+        // Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        // const URL = "https://USUARIO.pythonanywhere.com/";
+
+        // Obtiene el contenido del inventario
+        function obtenerSolicitudes() {
+            fetch(URL + 'solicitudes') // Realiza una solicitud GET al servidor y obtiene la lista de solicitudes.
+                .then(response => {
+                    // Si es exitosa (response.ok), convierte los datos de la respuesta de formato JSON a un objeto JavaScript.
+                    if (response.ok) { return response.json(); }
+                })
+                // Asigna los datos de los productos obtenidos a la propiedad productos del estado.
+                .then(data => {
+                    const solicitudesTable = document.getElementById('solicitudes-table').getElementsByTagName('tbody')[0];
+                    solicitudesTable.innerHTML = ''; // Limpia la tabla antes de insertar nuevos datos
+                    data.forEach(turno => {
+                        const row = solicitudesTable.insertRow();
+                        row.innerHTML = `
+                            <td>${turno.nombre}</td>
+                            <td>${turno.celular}</td>
+                            <td>${turno.servicio}</td>
+                            <td>${turno.vehiculo}</td>
+                            <td><button onclick="eliminarturno('${turno.id_turno}' )" style="color: silver ;" >Eliminar</button><br/>
+                                <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver ;" >Asignar</button></td>
+                        `;
+                    });
+                })
+                // Captura y maneja errores, mostrando una alerta en caso de error al obtener los productos.
+                .catch(error => {
+                    console.log('Error:', error);
+                    alert('Error al obtener las solicitudes.');
+                });
+        }
+
+        // Se utiliza para eliminar un producto.
+        function eliminarturno(id_turno) {
+            // Se muestra un diálogo de confirmación. Si el usuario confirma, se realiza una solicitud DELETE al servidor.
+            if (confirm('¿Estás seguro de que quieres eliminar esta solicitud?')) {
+                fetch(URL + `turnos/${id_turno}`, { method: 'DELETE' })
+                    .then(response => {
+                        if (response.ok) {
+                            // Si es exitosa (response.ok), elimina el producto y da mensaje de ok.
+                            obtenerSolicitudes(); // Vuelve a obtener la lista de productos para actualizar la tabla.
+                            alert('Solicitud eliminada correctamente.');
+                        }
+                    })
+                    // En caso de error, mostramos una alerta con un mensaje de error.
+                    .catch(error => {
+                        alert(error.message);
+                    });
+            }
+        }
+
+        // Cuando la página se carga, llama a obtenerSolicitudes para cargar la lista de productos.
+        document.addEventListener('DOMContentLoaded', obtenerSolicitudes);
+    </script>
+</body>
+
+</html>

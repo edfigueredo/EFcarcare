@@ -79,8 +79,8 @@ class Turno:
                                 servicio VARCHAR(200),
                                 foto VARCHAR(60),
                                 observaciones VARCHAR(60) NULL,
-                                fecha DATE NOT NULL,
-                                hora TIME NOT NULL);''')
+                                fecha DATE NULL,
+                                hora TIME NULL);''')
         #guarda los cambios
         self.conn.commit()
 
@@ -111,9 +111,9 @@ class Turno:
     #-----------------------------------
     #     Modificar Turno
     #-----------------------------------   
-    def modificar_turno(self, id_turno, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
-        sql="UPDATE turnos SET nombre=%s,celular=%s,vehiculo=%s,patente=%s,servicio=%s,foto=%s,fecha=%s,hora=%s WHERE id_turno=%s"
-        valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora, id_turno)
+    def modificar_turno(self, id_turno, observaciones,fecha,hora):
+        sql="UPDATE turnos SET observaciones=%s,fecha=%s,hora=%s WHERE id_turno=%s"
+        valores=(observaciones,fecha,hora, id_turno)
         self.cursor.execute(sql,valores)#ejecuta
         self.conn.commit()
         return self.cursor.rowcount > 0 #cantidad de columnas cambiadas
@@ -188,9 +188,9 @@ def agregar_turno():
 
     # Creo un nombre de imagen que no se repita y lo guardo en la carpeta img
     nombre_foto = secure_filename(archivo.filename)
-    nombre_base, extension = os.path.splitext(nombre_foto)
-    nombre_foto = f"{nombre_base}_{int(time.time())}{extension}"
-    ruta_foto = os.path.join('img', nombre_foto)
+    nombre_base, extension = os.path.splitext(nombre_foto) #divido el nombre en su nombre y extension
+    nombre_foto = f"{nombre_base}_{int(time.time())}{extension}" #rearmo el nombre nombre base fechahora y extension
+    ruta_foto = os.path.join('img', nombre_foto) #en esa ruta guardame la foto con ese nombre
     archivo.save(ruta_foto)
     
     # Doy el alta
@@ -201,6 +201,35 @@ def agregar_turno():
         return jsonify({"mensaje": "Turno creado correctamente.", "id_turno": nuevo_id, "al cliente": nombre}), 201
     else:
         return jsonify({"mensaje": "Error al crear el turno."}), 500
+    
+#-----------------------------------------------
+# modificar turno
+#-----------------------------------------------
+@app.route("/turnos/<int:id_turno>", methods=["PUT"]) 
+
+#solo permitimos modificar las observaciones si hay que agregar algun servicio, 
+#fecha y hora para asignar o modificar turno
+def modificar_turno(id_turno):
+    nueva_observaciones = request.form.get('observaciones')
+    nueva_fecha = request.form.get('fecha')
+    nueva_hora = request.form.get('hora')
+    
+    if turno.modificar_turno(id_turno, nueva_observaciones, nueva_fecha, nueva_hora):
+        return jsonify({"mensaje":"Turno modificado"}), 200
+    else:
+        return jsonify({"Mensaje": "No se Puedo modificar el Turno"}), 500
+    
+#--------------------------------------------------
+#     Eliminar
+#--------------------------------------------------
+
+@app.route("/turnos/<int:id_turno>", methods=["DELETE"])
+def eliminar_turno(id_turno):
+    if turno.eliminar_turno(id_turno):
+        return jsonify({"mensaje": "Turno eliminado correctamente."}), 200
+    else:
+        return jsonify({"mensaje": "Error al eliminar el turno."}), 500
+
 #-----------------------
 #cierre de flask
 #-----------------------
