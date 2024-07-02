@@ -76,7 +76,7 @@ class Turno:
                                 celular VARCHAR(20) NOT NULL,
                                 vehiculo VARCHAR(30) NOT NULL,
                                 patente VARCHAR(10) NOT NULL,
-                                servicio VARCHAR(60),
+                                servicio VARCHAR(200),
                                 foto VARCHAR(60),
                                 observaciones VARCHAR(60) NULL,
                                 fecha DATE NOT NULL,
@@ -92,9 +92,9 @@ class Turno:
     #    Agregar Turno
     #----------------------------------
 
-    def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,fecha,hora):
-        sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
-        valores=(nombre,celular,vehiculo,patente,servicio,foto,fecha,hora)
+    def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora):
+        sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        valores=(nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora)
         self.cursor.execute(sql,valores)#ejecuta
         self.conn.commit()
         return self.cursor.lastrowid #nos devuelve la ultima id creada
@@ -172,9 +172,35 @@ def buscar_turno(id_turno):
     listado_convertido = convertir_a_serializable(busqueda)
     return jsonify(listado_convertido)
 
-#---------------------- 
+#---------------------- agregar turno ---------------------------
 
+@app.route("/turnos", methods=["POST"])
+def agregar_turno():
+    nombre = request.form['nombre']
+    celular = request.form['celular']
+    vehiculo = request.form['vehiculo']
+    patente = request.form['patente']
+    servicios = ", ".join(request.form.getlist('servicios[]'))  # Convertimos la lista a una cadena
+    archivo = request.files['archivo']
+    observaciones = request.form['observaciones']
+    fecha = request.form['fecha']
+    hora = request.form['hora']
 
+    # Creo un nombre de imagen que no se repita y lo guardo en la carpeta img
+    nombre_foto = secure_filename(archivo.filename)
+    nombre_base, extension = os.path.splitext(nombre_foto)
+    nombre_foto = f"{nombre_base}_{int(time.time())}{extension}"
+    ruta_foto = os.path.join('img', nombre_foto)
+    archivo.save(ruta_foto)
+    
+    # Doy el alta
+    nuevo_id = turno.crear_turno(nombre, celular, vehiculo, patente, servicios, nombre_foto, observaciones, fecha, hora)
+    
+    # Me comunica si funcionó o no
+    if nuevo_id:
+        return jsonify({"mensaje": "Turno creado correctamente.", "id_turno": nuevo_id, "al cliente": nombre}), 201
+    else:
+        return jsonify({"mensaje": "Error al crear el turno."}), 500
 #-----------------------
 #cierre de flask
 #-----------------------

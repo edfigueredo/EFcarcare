@@ -82,134 +82,111 @@
     </section>
 
 
-    <!-- Nuevo turnos -->
-    <section>
-        <div  class="servicios-productos">
-            <h2 id="nuevos">Nuevo</h2>
+<!-- Nuevo turnos -->
+<section>
+    <div class="servicios-productos">
+        <h2 id="nuevo">Nuevo</h2>
+    </div>
 
-        </div>
+    <!-- Container de formulario -->
+    <div class="form-contact">
+        <div class="form-port">
+            <!-- Container de campos del formulario -->
+            <form id="myForm" class="form-contact-data" method="post" autocomplete="off" enctype="multipart/form-data">
+                <div class="form-contact-data form-contact-data-1">
 
-        <!-- Container de formulario -->
-        <div class="form-contact">
+                    <label for="nombre" class="label-nombre">Ingrese Nombre</label>
+                    <input type="text" class="dato input-nombre" name="nombre" id="nombre" placeholder="Nombre y Apellido" required>
 
-            <div class="form-port">
-                <!-- Container de campos del formulario -->
-                <form id="myForm" class="form-contact-data"
-                    method="post" autocomplete="off" enctype="multipart/form-data">
-                    <div class="form-contact-data form-contact-data-1">
+                    <label for="celular">Ingrese Número de contacto</label>
+                    <input type="tel" id="celular" class="dato input-contacto" name="celular" placeholder="N° de Celular de 7 a 11" required>
 
-                        <label for="nombre-apellido" class="label-nombre">Ingrese Nombre</label>
-                        <input type="text" class="dato input-nombre" name="nombre-apellido" id="nombre-apellido"
-                            placeholder="Nombre y Apellido" required>
+                    <h3 class="title-service">Servicios Interesados</h3>
+                    <div class="servicios-interez">
+                        <label for="modelo1">Corrección de barniz - Tratamientos</label>
+                        <input type="checkbox" id="modelo1" name="servicios[]" value="Corrección de barniz - Tratamientos">
 
-                        <label for="telefono">Ingrese Numero de contacto</label>
-                        <input type="tel" id="telefono" class="dato input-contacto" name="phone"
-                            placeholder="N° de Celular de 7 a 11" required>
+                        <label for="modelo2">Ploteos - Película protectora PPF</label>
+                        <input type="checkbox" id="modelo2" name="servicios[]" value="Ploteos - Película protectora PPF">
 
-                        <h3 class="title-service">Servicios Interesados</h3>
-                        <div class="servicios-interez">
-                            <label for="modelo1"> Corrección de barniz - Tratamientos.</label>
-                            <input type="checkbox" id="modelo1" name="tipo-auto"
-                                value="Corrección de barniz - Tratamientos">
+                        <label for="modelo3">Limpieza interior - motores - chasis</label>
+                        <input type="checkbox" id="modelo3" name="servicios[]" value="Limpieza interior - motores - chasis">
 
-                            <label for="modelo2"> Ploteos - Película protectora PPF.</label>
-                            <input type="checkbox" id="modelo2" name="tipo-auto"
-                                value="Ploteos - Película protectora PPF">
+                        <label for="modelo4">Lavado detallados</label>
+                        <input type="checkbox" id="modelo4" name="servicios[]" value="Lavado detallados">
 
-                            <label for="modelo3"> Limpieza interior - motores - chasis.</label>
-                            <input type="checkbox" id="modelo3" name="tipo-auto"
-                                value="Limpieza interior - motores - chasis">
-
-                            <label for="modelo4"> Lavado detallados.</label>
-                            <input type="checkbox" id="modelo4" name="tipo-auto" value="Lavado detallados">
-
-                            <label for="modelo5"> Reparación, pintura de llantas o piezas.</label>
-                            <input type="checkbox" id="modelo5" name="tipo-auto"
-                                value="Reparación, pintura de llantas o piezas">
-
-                        </div>
-
+                        <label for="modelo5">Reparación, pintura de llantas o piezas</label>
+                        <input type="checkbox" id="modelo5" name="servicios[]" value="Reparación, pintura de llantas o piezas">
                     </div>
-                    <div class="form-contact-data form-contact-data-2">
+                  <br>
+                    <label for="fecha"><h3>Seleccion una fecha</h3></label>
+                    <input type="date" id="fecha" name="fecha" class="dato input-contacto">
+                    
+                    <label for="hora" ><h3>Seleccione una hora</h3></label>
+                    <input type="time" id="hora" name="hora" class="dato input-contacto">
 
-                        <label for="patente">Ingrese la patente</label>
-                        <input type="tel" id="patente" class="dato input-contacto" name="patente">
+                </div>
+                <div class="form-contact-data form-contact-data-2">
 
-                        <label for="cars">Ingrese tipo de vehiculo</label>
-                        <select id="cars" class="select-vehiculo">
-                            <option value="tipo-vehiculo">Tipo de vehiculo</option>
-                            <option value="pickup-suv"> Pick up - Suv</option>
-                            <option value="sedan"> Sedan</option>
-                            <option value="embarcacion"> Embarcación</option>
-                            <option value="motocicleta-cuatriciclo"> Motocicleta - Cuatriciclo</option>
-                        </select>
+                    <label for="patente">Ingrese la patente</label>
+                    <input type="text" id="patente" class="dato input-contacto" name="patente" placeholder="Patente del vehículo">
 
+                    <label for="vehiculo">Ingrese tipo de vehículo</label>
+                    <select id="vehiculo" class="select-vehiculo" name="vehiculo">
+                        <option value="">Tipo de vehículo</option>
+                        <option value="pickup-suv">Pick up - SUV</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="embarcacion">Embarcación</option>
+                        <option value="motocicleta-cuatriciclo">Motocicleta - Cuatriciclo</option>
+                    </select>
 
-                        <div class="adj-file">
-                            <label for="archiv">
-                                Ingrese una imagen del vehículo <br>
-
-                                <img src="/img/submit.png" alt="subir"><br>
-                                <small id="upload-img">su seleccion es...</small>
-
-
-                            </label>
-
-                            <input type="file" name="myfile" id="archiv" class="upload-arch">
-                        </div>
-
-                        <h3><br>Desea insertar un comentario</h3>
-                        <textarea class="text-area" name="message" rows="10" cols="30" id="comentario"
-                            placeholder="Agregue un comentario aqui..."></textarea>
-
-
-                        <button id="boton">Generar turno</button>
+                    <div class="adj-file">
+                        <label for="archivo">
+                            Ingrese una imagen del vehículo <br>
+                            <img src="/img/submit.png" alt="subir"><br>
+                            <small id="upload-img">Su selección es...</small>
+                        </label>
+                        <input type="file" name="archivo" id="archivo" class="upload-arch">
                     </div>
 
-                </form>
-            </div>
+                    <h3><br>¿Desea insertar un comentario?</h3>
+                    <textarea class="text-area" name="observaciones" rows="10" cols="30" id="observaciones" placeholder="Agregue un comentario aquí..."></textarea>
 
+                    
+
+                    <button type="submit" id="boton">Generar turno</button>
+                </div>
+            </form>
         </div>
+    </div>
+</section>
 
-    </section>
+<script>
+    const URL = "http://127.0.0.1:5000/";
 
-    <script>
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita que se envíe el formulario
 
+        const formData = new FormData(this);
 
-        const URL = "http://127.0.0.1:5500/"
-        document.getElementById('boton').addEventListener('submit', function (event) {
-        event.preventDefault(); //evita que envie el form
-
-        var formData = new FormData(this);
-        
-        fetch(URL+'turnos',{
-            method: 'POST',
-            body: 'formData'
-        })
-            .then(function(data){
-                alert('agendado!!!');
+        fetch(URL + 'turnos', {
+                method: 'POST',
+                body: formData
             })
-
-            .catch(function(error){
-                alert('Error al generar el turno');
+            .then(response => response.json())
+            .then(data => {
+                alert('Turno agendado correctamente.');
+                // Puedes agregar más lógica aquí si es necesario
             })
-
-            .finally(function(){
-                document.getElementById('nombre-apellido').value="";
-                document.getElementById('telefono').value="";
-                document.getElementById('modelo1').value="";
-                document.getElementById('modelo2').value="";
-                document.getElementById('modelo3').value="";
-                document.getElementById('modelo4').value="";
-                document.getElementById('modelo5').value="";
-                document.getElementById('patente').value="";
-                document.getElementById('upload-img').value="";
-                document.getElementById('comentario').value="";
+            .catch(error => {
+                alert('Error al generar el turno.');
+                console.error('Error:', error);
             })
-
-        })
-
-    </script>
+            .finally(() => {
+                document.getElementById('myForm').reset();
+            });
+    });
+</script>
 
 </body>
 
