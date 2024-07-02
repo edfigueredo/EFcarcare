@@ -52,8 +52,14 @@
                             <td>${turno.celular}</td>
                             <td>${turno.servicio}</td>
                             <td>${turno.vehiculo}</td>
-                            <td><button onclick="eliminarturno('${turno.id_turno}' )" style="color: silver ;" >Eliminar</button><br/>
-                                <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver ;" >Asignar</button></td>
+                            <td >  <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px"></botton> 
+                                   
+                                    <br>
+
+                                    <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-check" src="../crud/img/check.com.png" alt="asignar" style="width: 30px; margin: 5px "></button>
+                            </td>
                         `;
                     });
                 })

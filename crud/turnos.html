@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/logo.ico">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/crud.css">
+    <!-- Script de Fontawesome -->
+    <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
+    <!-- Título -->
+    <title>EF Car Care</title>
+</head>
+<body>
+    <table id="turnos-table" style="color: silver;">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Vehículo</th>
+                <th>Servicios</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const URL = "http://127.0.0.1:5000/";
+
+        // Obtiene el contenido del inventario
+        function obtenerTurnos() {
+            fetch(URL + 'turnos')
+                .then(response => response.ok ? response.json() : Promise.reject(response))
+                .then(data => {
+                    const turnosTable = document.getElementById('turnos-table').getElementsByTagName('tbody')[0];
+                    turnosTable.innerHTML = '';
+                    data.forEach(turno => {
+                        const row = turnosTable.insertRow();
+                        row.innerHTML = `
+                            <td>${turno.fecha} <br/> ${turno.hora}<br/>
+                                ${turno.nombre}<br/>
+                                ${turno.celular}</td>
+                            <td><img src="../crud/img/${turno.foto}" alt="${turno.vehiculo}" style="width: 40px; margin: 5px"><br/>
+                                ${turno.servicio}<br/>
+                                ${turno.observaciones}</td>
+                            <td>
+                                <button onclick="eliminarTurno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px">
+                                </button><br>
+                                <button onclick="asignarTurno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-check" src="../crud/img/calendario.com.png" alt="reprogramar" style="width: 30px; margin: 5px">
+                                </button>
+                            </td>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al obtener los turnos.');
+                });
+        }
+
+        // Se utiliza para eliminar un turno.
+        function eliminarTurno(id_turno) {
+            if (confirm('¿Estás seguro de que quieres eliminar este turno?')) {
+                fetch(URL + `turnos/${id_turno}`, { method: 'DELETE' })
+                    .then(response => {
+                        if (response.ok) {
+                            obtenerTurnos();
+                            alert('Turno eliminado correctamente.');
+                        } else {
+                            throw new Error('Error al eliminar el turno.');
+                        }
+                    })
+                    .catch(error => {
+                        alert(error.message);
+                    });
+            }
+        }
+
+        // Se utiliza para asignar un turno (la lógica específica deberá ser implementada).
+        function asignarTurno(id_turno) {
+            // Aquí puedes agregar la lógica para asignar un turno.
+            alert('Funcionalidad de asignar turno aún no implementada.');
+        }
+
+        // Cuando la página se carga, llama a obtenerTurnos para cargar la lista de turnos.
+        document.addEventListener('DOMContentLoaded', obtenerTurnos);
+    </script>
+</body>
+</html>
