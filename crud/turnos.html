@@ -15,10 +15,10 @@
     <table id="turnos-table" style="color: silver;">
         <thead>
             <tr>
-                <th>Cliente</th>
+                <th>Turno</th>
                 <th>Vehículo</th>
-                <th>Servicios</th>
-                <th>Acciones</th>
+                <th>Observaciones</th>
+                <th>Borrar / Posponer</th>
             </tr>
         </thead>
         <tbody>
@@ -38,12 +38,17 @@
                     data.forEach(turno => {
                         const row = turnosTable.insertRow();
                         row.innerHTML = `
-                            <td>${turno.fecha} <br/> ${turno.hora}<br/>
+                            <td><b>Dia:</b> ${turno.fecha} <br/> 
+                                <b>Hora:</b> ${turno.hora}<br/>
                                 ${turno.nombre}<br/>
-                                ${turno.celular}</td>
-                            <td><img src="../crud/img/${turno.foto}" alt="${turno.vehiculo}" style="width: 40px; margin: 5px"><br/>
-                                ${turno.servicio}<br/>
-                                ${turno.observaciones}</td>
+                                ${turno.celular}
+                            </td>
+                            <td><img src="./img/${turno.foto}" alt="${turno.vehiculo}" style="width: 40px; margin: 5px"><br/>
+                                ${turno.servicio}
+                            </td>
+                            <td>
+                                ${turno.observaciones}
+                            </td>
                             <td>
                                 <button onclick="eliminarTurno('${turno.id_turno}')" style="color: silver;">
                                     <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px">

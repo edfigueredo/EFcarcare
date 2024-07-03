@@ -1,27 +1,24 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-
-#copie tal cual el proyecto
-
 # Instalar con pip install Flask
 from flask import Flask, request, jsonify, render_template
 
 # Instalar con pip install flask-cors
 from flask_cors import CORS
+
 # Si es necesario, pip install Werkzeug
 from werkzeug.utils import secure_filename
 
 # No es necesario instalar, es parte del sistema standard de Python
 import os
 import time
-#--------------------------------------------------------------------
+
 from datetime import datetime, timedelta
-#------------------------------------------------------
-#    funcion para tiem data a string
-#------------------------------------------------------
 
-
+#------------------------------------------------------
+#    Función para convertir datos a string
+#------------------------------------------------------
 def convertir_a_serializable(obj):
     if isinstance(obj, (datetime, timedelta)):
         return str(obj)
@@ -32,46 +29,44 @@ def convertir_a_serializable(obj):
     else:
         return obj
 
-#creamos un objeto de flask para usar sus metodos
-
-app = Flask(__name__) #podes llamar como quieras usamos app
-CORS(app)             # Esto habilitará CORS para todas las rutas
-
+# Creamos un objeto de Flask para usar sus métodos
+app = Flask(__name__)  # Podes llamar como quieras, usamos app
+CORS(app)  # Esto habilitará CORS para todas las rutas
 
 class Turno:
-
-#creo el constructor
-    def __init__ (self,host, user, password,database):
+    # Creo el constructor
+    def __init__(self, host, user, password, database):
         """
-        Args
-        host(str): direccion de servidor
-        user(str): nombre de usurio
+        Args:
+        host (str): dirección del servidor
+        user (str): nombre de usuario
         password: contraseña
-        database: el nombre de la bd
+        database: el nombre de la BD
         """
-        #establecemos la coneccion
+        # Establecemos la conexión
         self.conn = mysql.connector.connect(
             host=host,
             user=user,
             password=password
-        )  
-    #creo el cursor
-        self.cursor=self.conn.cursor()
+        )
+        # Creo el cursor
+        self.cursor = self.conn.cursor()
 
-    #creoamos o conectamos a la bd
+        # Intentamos usar la base de datos
         try:
             self.cursor.execute(f"USE {database}")
         except mysql.connector.Error as err:
-            #si el error es xq la bd no existe la creo
-            if err.errno==errorcode.ER_BAD_DB_ERROR:
-                self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {database}")
-                self.conndatabase=database
+            # Si el error es porque la BD no existe, la creo
+            if err.errno == errorcode.ER_BAD_DB_ERROR:
+                self.cursor.execute(f"CREATE DATABASE {database}")
+                self.conn.database = database
+                self.cursor.execute(f"USE {database}")
             else:
-                    raise err
-            
-        #creo la bd
+                raise err
+
+        # Creación de la tabla
         self.cursor.execute(''' CREATE TABLE IF NOT EXISTS `turnos`(
-                                id_turno INT  PRIMARY KEY AUTO_INCREMENT,
+                                id_turno INT PRIMARY KEY AUTO_INCREMENT,
                                 nombre VARCHAR(40) NOT NULL,
                                 celular VARCHAR(20) NOT NULL,
                                 vehiculo VARCHAR(30) NOT NULL,
@@ -81,99 +76,100 @@ class Turno:
                                 observaciones VARCHAR(60) NULL,
                                 fecha DATE NULL,
                                 hora TIME NULL);''')
-        #guarda los cambios
+        # Guarda los cambios
         self.conn.commit()
 
-        #cierra el cursor y abre uno nuevo con el parametro diccionario=true
+        # Cierra el cursor y abre uno nuevo con el parámetro dictionary=True
         self.cursor.close()
-        self.cursor=self.conn.cursor(dictionary=True)
+        self.cursor = self.conn.cursor(dictionary=True)
 
     #----------------------------------
     #    Agregar Turno
     #----------------------------------
+    def crear_turno(self, nombre, celular, vehiculo, patente, servicio, foto, observaciones, fecha, hora):
+        
+        # Convertimos valores de fecha y hora a NULL si son cero
+        if fecha == '0' or fecha == '':
+            fecha = None
+        if hora == '0' or hora == '':
+            hora = None
 
-    def crear_turno(self, nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora):
-        sql="INSERT INTO turnos (nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-        valores=(nombre,celular,vehiculo,patente,servicio,foto,observaciones,fecha,hora)
-        self.cursor.execute(sql,valores)#ejecuta
+        sql = "INSERT INTO turnos (nombre, celular, vehiculo, patente, servicio, foto, observaciones, fecha, hora) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        valores = (nombre, celular, vehiculo, patente, servicio, foto, observaciones, fecha, hora)
+        self.cursor.execute(sql, valores)  # Ejecuta
         self.conn.commit()
-        return self.cursor.lastrowid #nos devuelve la ultima id creada
+        return self.cursor.lastrowid  # Nos devuelve la última ID creada
 
     #-----------------------------------
-    #     Consultar turno
+    #     Consultar Turno
     #-----------------------------------
-
-    def consulta_turno(self,id_turno):
-        #consultamos un turno
+    def consulta_turno(self, id_turno):
+        # Consultamos un turno
         self.cursor.execute(f"SELECT * FROM turnos WHERE id_turno={id_turno}")
-        return self.cursor.fetchone()   #devuelve el registro uno solo
+        return self.cursor.fetchone()  # Devuelve el registro uno solo
 
     #-----------------------------------
     #     Modificar Turno
     #-----------------------------------   
-    def modificar_turno(self, id_turno, observaciones,fecha,hora):
-        sql="UPDATE turnos SET observaciones=%s,fecha=%s,hora=%s WHERE id_turno=%s"
-        valores=(observaciones,fecha,hora, id_turno)
-        self.cursor.execute(sql,valores)#ejecuta
+    def modificar_turno(self, id_turno, observaciones, fecha, hora):
+        sql = "UPDATE turnos SET observaciones=%s, fecha=%s, hora=%s WHERE id_turno=%s"
+        valores = (observaciones, fecha, hora, id_turno)
+        self.cursor.execute(sql, valores)  # Ejecuta
         self.conn.commit()
-        return self.cursor.rowcount > 0 #cantidad de columnas cambiadas
+        return self.cursor.rowcount > 0  # Cantidad de columnas cambiadas
 
     #-----------------------------------
     #     Listar Turnos
     #-----------------------------------   
     def listar_turnos(self):
-        self.cursor.execute("SELECT * FROM turnos WHERE fecha >= CURDATE();")
-        turnos=self.cursor.fetchall() #devuelve todos los resultados
+        self.cursor.execute("SELECT id_turno, nombre, celular, vehiculo, patente, servicio, foto, observaciones, DATE_FORMAT(fecha, '%d-%m') AS fecha, hora FROM turnos WHERE fecha >= CURDATE();")
+        turnos = self.cursor.fetchall()  # Devuelve todos los resultados
         return turnos
 
     #-----------------------------------
-    #     Listar Nuevas Solciitudes
+    #     Listar Nuevas Solicitudes
     #-----------------------------------   
     def listar_solicitudes(self):
         self.cursor.execute("SELECT * FROM turnos WHERE fecha IS NULL;")
-        turnos=self.cursor.fetchall() #devuelve todos los resultados
+        turnos = self.cursor.fetchall()  # Devuelve todos los resultados
         return turnos
 
     #-----------------------------------
-    #     eliminar Turno
+    #     Eliminar Turno
     #-----------------------------------   
-
     def eliminar_turno(self, id_turno):
         self.cursor.execute(f"DELETE FROM turnos WHERE id_turno={id_turno}")
         self.conn.commit()
-        return self.cursor.rowcount > 0 #si devuelve cero es que no borro nada
-
-
+        return self.cursor.rowcount > 0  # Si devuelve cero es que no borró nada
 
 #-----------------------------------
-#   cuerpo del programa"
+#   Cuerpo del programa
 #-----------------------------------
 
-turno=Turno(host='localhost',user='admin',password='admin',database='efcarcare')
+turno = Turno(host='localhost', user='admin', password='admin', database='efcarcare')
 
-#-----------------------listado de turnos----------------
+#-----------------------Listado de turnos----------------
 @app.route("/turnos", methods=["GET"])
 def listar_turnos():
     listado = turno.listar_turnos()
     listado_convertido = convertir_a_serializable(listado)
     return jsonify(listado_convertido)
 
-#-----------------------listado de solicitudes--------------
+#-----------------------Listado de solicitudes--------------
 @app.route("/solicitudes", methods=["GET"])
 def listar_solicitud():
     listado = turno.listar_solicitudes()
     listado_convertido = convertir_a_serializable(listado)
     return jsonify(listado_convertido)
 
-#---------------------- buscar turno ------------------------
+#---------------------- Buscar turno ------------------------
 @app.route("/buscar/<int:id_turno>", methods=["GET"])
 def buscar_turno(id_turno):
     busqueda = turno.consulta_turno(id_turno)
     listado_convertido = convertir_a_serializable(busqueda)
     return jsonify(listado_convertido)
 
-#---------------------- agregar turno ---------------------------
-
+#---------------------- Agregar turno ---------------------------
 @app.route("/turnos", methods=["POST"])
 def agregar_turno():
     nombre = request.form['nombre']
@@ -188,10 +184,14 @@ def agregar_turno():
 
     # Creo un nombre de imagen que no se repita y lo guardo en la carpeta img
     nombre_foto = secure_filename(archivo.filename)
-    nombre_base, extension = os.path.splitext(nombre_foto) #divido el nombre en su nombre y extension
-    nombre_foto = f"{nombre_base}_{int(time.time())}{extension}" #rearmo el nombre nombre base fechahora y extension
-    ruta_foto = os.path.join('img', nombre_foto) #en esa ruta guardame la foto con ese nombre
-    archivo.save(ruta_foto)
+    nombre_base, extension = os.path.splitext(nombre_foto)  # Divido el nombre en su nombre y extensión
+    nombre_foto = f"{nombre_base}_{int(time.time())}{extension}"  # Rearmo el nombre: nombre base, fechahora y extensión
+    ruta_foto = os.path.join('./img/', nombre_foto)  # En esa ruta guarda la foto con ese nombre
+    
+    try:
+        archivo.save(ruta_foto)
+    except Exception as e:
+        return jsonify({"mensaje": "Error al guardar el archivo.", "error": str(e)}), 500
     
     # Doy el alta
     nuevo_id = turno.crear_turno(nombre, celular, vehiculo, patente, servicios, nombre_foto, observaciones, fecha, hora)
@@ -203,26 +203,24 @@ def agregar_turno():
         return jsonify({"mensaje": "Error al crear el turno."}), 500
     
 #-----------------------------------------------
-# modificar turno
+# Modificar turno
 #-----------------------------------------------
 @app.route("/turnos/<int:id_turno>", methods=["PUT"]) 
-
-#solo permitimos modificar las observaciones si hay que agregar algun servicio, 
-#fecha y hora para asignar o modificar turno
+# Solo permitimos modificar las observaciones, agregar algún servicio, 
+# fecha y hora para asignar o modificar turno
 def modificar_turno(id_turno):
     nueva_observaciones = request.form.get('observaciones')
     nueva_fecha = request.form.get('fecha')
     nueva_hora = request.form.get('hora')
     
     if turno.modificar_turno(id_turno, nueva_observaciones, nueva_fecha, nueva_hora):
-        return jsonify({"mensaje":"Turno modificado"}), 200
+        return jsonify({"mensaje": "Turno modificado"}), 200
     else:
-        return jsonify({"Mensaje": "No se Puedo modificar el Turno"}), 500
+        return jsonify({"mensaje": "No se pudo modificar el turno"}), 500
     
 #--------------------------------------------------
 #     Eliminar
 #--------------------------------------------------
-
 @app.route("/turnos/<int:id_turno>", methods=["DELETE"])
 def eliminar_turno(id_turno):
     if turno.eliminar_turno(id_turno):
@@ -231,7 +229,7 @@ def eliminar_turno(id_turno):
         return jsonify({"mensaje": "Error al eliminar el turno."}), 500
 
 #-----------------------
-#cierre de flask
+# Cierre de Flask
 #-----------------------
 if __name__ == "__main__":
     app.run(debug=True)
