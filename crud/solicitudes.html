@@ -14,17 +14,17 @@
 </head>
 
 <body>
-    <table id="solicitudes-table" style="color: silver ;"> <!-- Se crea una tabla para mostrar los productos. -->
+    <table id="solicitudes-table" style="color: silver; border-spacing: 5px;"> <!-- Se crea una tabla para mostrar los productos. -->
         <thead> <!-- Encabezado de la tabla con columnas para nombre, celular, servicios, vehículo y acciones. -->
             <tr>
-                <th >Nombre</th>
+                <th style="width: 10%;">Nombre</th>
                 <th>Celular</th>
                 <th>Servicios</th>
                 <th>Vehículo</th>
                 <th>Eliminar / Aceptar</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="vertical-align: top;">
         </tbody>
     </table>
 
@@ -48,17 +48,26 @@
                     data.forEach(turno => {
                         const row = solicitudesTable.insertRow();
                         row.innerHTML = `
-                            <td>${turno.nombre}</td>
+                            <td>${turno.nombre}<br/><br/>
+                                <form id="form-Asignar">
+                                    <label for="fecha"><h3>Selecciona una fecha</h3></label>
+                                    <input type="date" id="nuevaFecha" name="fecha" style="color: silver" class="dato input-contacto">
+                                    <br/>
+                                    <label for="hora"><h3>Selecciona una hora</h3></label>
+                                    <input type="time" id="nuevaHora" name="hora" style="color: silver" class="dato input-contacto">    
+                                </form>
+                            </td>
                             <td>${turno.celular}</td>
                             <td>${turno.servicio}</td>
                             <td>${turno.vehiculo}</td>
-                            <td >  <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver;">
-                                    <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px"></botton> 
-                                   
-                                    <br>
-
-                                    <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver;">
-                                    <img class="btn-check" src="../crud/img/check.com.png" alt="asignar" style="width: 30px; margin: 5px "></button>
+                            <td>
+                                <button onclick="eliminarturno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px">
+                                </button>
+                                <br>
+                                <button onclick="asignarTurno('${turno.id_turno}')" style="color: silver;">
+                                    <img class="btn-check" src="../crud/img/check.com.png" alt="asignar" style="width: 30px; margin: 5px">
+                                </button>
                             </td>
                         `;
                     });
@@ -71,6 +80,7 @@
         }
 
         // Se utiliza para eliminar un producto.
+        //--------------------------------------------------------
         function eliminarturno(id_turno) {
             // Se muestra un diálogo de confirmación. Si el usuario confirma, se realiza una solicitud DELETE al servidor.
             if (confirm('¿Estás seguro de que quieres eliminar esta solicitud?')) {
@@ -87,6 +97,35 @@
                         alert(error.message);
                     });
             }
+        }
+
+        // Se utiliza para asignar un turno aceptando la fecha y hora antes fijada.
+        //-----------------------------------------------------------------------------
+        function asignarTurno(id_turno) {
+            // Le doy el form para que asigne la fecha y la hora 
+            const formData = new FormData();
+            formData.append('fecha', document.getElementById('nuevaFecha').value);
+            formData.append('hora', document.getElementById('nuevaHora').value);
+
+            fetch(URL + `turnos/${id_turno}`, {
+                method: 'PUT',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al guardar los cambios del turno.');
+                    }
+                })
+                .then(data => {
+                    alert('Se asignó el horario correctamente.');
+                    obtenerSolicitudes(); // Actualiza la tabla después de asignar el turno.
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al asignar turno.');
+                });
         }
 
         // Cuando la página se carga, llama a obtenerSolicitudes para cargar la lista de productos.

@@ -10,23 +10,44 @@
     <script src="https://kit.fontawesome.com/53b92063da.js" crossorigin="anonymous"></script>
     <!-- Título -->
     <title>EF Car Care</title>
+
 </head>
 <body>
-    <table id="turnos-table" style="color: silver;">
-        <thead>
+    <table id="turnos-table" style="color: silver;border-spacing: 5px;"> <!-- Se crea una tabla para mostrar los turnos. -->
+        <thead> <!-- Encabezado de la tabla con columnas para turno, vehículo, observaciones y acciones. -->
             <tr>
                 <th>Turno</th>
                 <th>Vehículo</th>
                 <th>Observaciones</th>
                 <th>Borrar / Posponer</th>
-            </tr>
+            </tr>           
         </thead>
         <tbody>
         </tbody>
     </table>
 
+    <!-- Ventana pop para seleccionar fecha y hora -->
+    <div id="myVentanapop" class="ventanapop">
+        <div class="ventanapop-content">
+            <span class="close">&times;</span>
+            <h2>Modificar Horario</h2>
+            <form id="form-Asignar">
+                <label for="fecha"><h3>Selecciona nueva fecha</h3></label>
+                <input type="date" id="nuevaFecha" name="fecha" style="color: silver" class="dato input-contacto">
+                <br/><br/>
+                <label for="hora"><h3>Selecciona nueva hora</h3></label>
+                <input type="time" id="nuevaHora" name="hora" style="color: silver" class="dato input-contacto">
+                <br/><br/>
+                <button type="button" onclick="submitTurno()">
+                    <img class="btn-check" src="../crud/img/check.com.png" alt="asignar" style="width: 20px;">
+                </button>
+            </form>
+        </div>
+    </div>
+
     <script>
         const URL = "http://127.0.0.1:5000/";
+        let currentTurnoId;
 
         // Obtiene el contenido del inventario
         function obtenerTurnos() {
@@ -34,13 +55,14 @@
                 .then(response => response.ok ? response.json() : Promise.reject(response))
                 .then(data => {
                     const turnosTable = document.getElementById('turnos-table').getElementsByTagName('tbody')[0];
-                    turnosTable.innerHTML = '';
+                    turnosTable.innerHTML = ''; // Limpia la tabla antes de insertar nuevos datos
                     data.forEach(turno => {
                         const row = turnosTable.insertRow();
                         row.innerHTML = `
-                            <td><b>Dia:</b> ${turno.fecha} <br/> 
+                            <td>
+                                <b>Dia:</b> ${turno.fecha} <br/> 
                                 <b>Hora:</b> ${turno.hora}<br/>
-                                ${turno.nombre}<br/>
+                                ${turno.nombre}<br/><br/>
                                 ${turno.celular}
                             </td>
                             <td><img src="./img/${turno.foto}" alt="${turno.vehiculo}" style="width: 40px; margin: 5px"><br/>
@@ -53,7 +75,7 @@
                                 <button onclick="eliminarTurno('${turno.id_turno}')" style="color: silver;">
                                     <img class="btn-borrar" src="../crud/img/pngwing.com.png" alt="borrar" style="width: 20px; margin: 5px">
                                 </button><br>
-                                <button onclick="asignarTurno('${turno.id_turno}')" style="color: silver;">
+                                <button onclick="openVentanapop('${turno.id_turno}')" style="color: silver;">
                                     <img class="btn-check" src="../crud/img/calendario.com.png" alt="repro" style="width: 30px; margin: 5px">
                                 </button>
                             </td>
@@ -68,26 +90,75 @@
 
         // Se utiliza para eliminar un turno.
         function eliminarTurno(id_turno) {
+            // Se muestra un diálogo de confirmación. Si el usuario confirma, se realiza una solicitud DELETE al servidor.
             if (confirm('¿Estás seguro de que quieres eliminar este turno?')) {
                 fetch(URL + `turnos/${id_turno}`, { method: 'DELETE' })
                     .then(response => {
                         if (response.ok) {
-                            obtenerTurnos();
+                            // Si es exitosa (response.ok), elimina el turno y da mensaje de ok.
+                            obtenerTurnos(); // Vuelve a obtener la lista de turnos para actualizar la tabla.
                             alert('Turno eliminado correctamente.');
                         } else {
                             throw new Error('Error al eliminar el turno.');
                         }
                     })
+                    // En caso de error, mostramos una alerta con un mensaje de error.
                     .catch(error => {
                         alert(error.message);
                     });
             }
         }
 
-        // Se utiliza para asignar un turno (la lógica específica deberá ser implementada).
-        function asignarTurno(id_turno) {
-            // Aquí puedes agregar la lógica para asignar un turno.
-            alert('Funcionalidad de asignar turno aún no implementada.');
+        // Abre la ventana pop para asignar un turno
+        function openVentanapop(id_turno) {
+            currentTurnoId = id_turno;
+            document.getElementById('myVentanapop').style.display = "block";
+        }
+
+        // Cierra la ventana pop
+        function closeVentanapop() {
+            document.getElementById('myVentanapop').style.display = "none";
+        }
+
+        // Asigna el turno con la fecha y hora seleccionadas
+        function submitTurno() {
+            // Le doy el form para que asigne la fecha y la hora 
+            const formData = new FormData();
+            formData.append('fecha', document.getElementById('nuevaFecha').value);
+            formData.append('hora', document.getElementById('nuevaHora').value);
+
+            fetch(URL + `turnos/${currentTurnoId}`, {
+                method: 'PUT',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al guardar los cambios del turno.');
+                    }
+                })
+                .then(data => {
+                    alert('Se asignó el horario correctamente.');
+                    closeVentanapop(); // Cierra la ventana pop después de asignar el turno
+                    obtenerTurnos(); // Actualiza la tabla después de asignar el turno
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al asignar turno.');
+                });
+        }
+
+        // Cierra la ventana pop cuando se hace clic en el botón de cierre
+        document.getElementsByClassName('close')[0].onclick = function() {
+            closeVentanapop();
+        }
+
+        // Cierra la ventana pop cuando se hace clic fuera del contenido de la ventana pop
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myVentanapop')) {
+                closeVentanapop();
+            }
         }
 
         // Cuando la página se carga, llama a obtenerTurnos para cargar la lista de turnos.
