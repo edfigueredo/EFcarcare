@@ -40,11 +40,19 @@
     }
 
 /* --------------- Nuevas solicitudes ---------------*/
-#solicitudes, #turnos{
-    width: 60%;
+
+#solicitudes, #turnos, #nuevo{
+    width: 70%;
     margin: 50px auto;
 }
-.servicios-productos h2, #turnos h2{
+.solicitudes-table, .turnos-table{
+    color: silver;
+    border-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.servicios-productos h2, #turnos h2, #nuevo h2{
     font-size: 1.5rem;
     margin-top: 0;
     padding-left: 5%;
@@ -52,7 +60,26 @@
     color: rgb(255, 255, 255);
     font-weight: normal;
 }
-.solicitudes{
+#solicitudes-table th:nth-child(1), #solicitudes-table td:nth-child(1) {
+    width: 20%; /* Ancho del 25% para la primera columna */
+  }
+  
+  #solicitudes-table th:nth-child(2), #solicitudes-table td:nth-child(2) {
+    width: 15%; /* Ancho del 10% para la segunda columna */
+  }
+  
+  #solicitudes-table th:nth-child(3), #solicitudes-table td:nth-child(3) {
+    width: 30%; /* Ancho del 30% para la tercera columna */
+  }
+  
+  #solicitudes-table th:nth-child(4), #solicitudes-table td:nth-child(4) {
+    width: 15%; /* Ancho del 15% para la cuarta columna */
+  }
+  
+  #solicitudes-table th:nth-child(5), #solicitudes-table td:nth-child(5) {
+    width: 20%; /* Ancho del 20% para la quinta columna */
+  }
+/**.solicitudes{
     margin: 1.5rem;
     display: flex;
     justify-content: space-evenly;
@@ -83,7 +110,7 @@
     height: 300px;
     background-color: rgba(6, 121, 121, 0.36);
     margin: auto;
-}
+}**/
 
 /*--------------- Observaciones ---------------*/
 
@@ -130,7 +157,26 @@
 }
 
 /* --------------- Turnos --------------- */
-.turnos-panel{
+/*.turnos-table{
+    text-align: justify
+
+}*/
+#turnos-table th:nth-child(1), #turnos-table td:nth-child(1) {
+    width: 20%; /* Ancho del 20% para la primera columna */
+  }
+  
+  #turnos-table th:nth-child(2), #turnos-table td:nth-child(2) {
+    width: 20%; /* Ancho del 20% para la segunda columna */
+  }
+  
+  #turnos-table th:nth-child(3), #turnos-table td:nth-child(3) {
+    width: 40%; /* Ancho del 40% para la tercera columna */
+  }
+  
+  #turnos-table th:nth-child(4), #turnos-table td:nth-child(4) {
+    width: 20%; /* Ancho del 20% para la cuarta columna */
+  }
+/**.turnos-panel{
     width: 60%;
     margin: auto;
     display: grid;
@@ -176,13 +222,14 @@
     align-self: center;
     z-index: 5;
 }
-
+**/
 /* --------------- Nuevo --------------- */
 
 #nuevos, .form-contact{
-    width: 60%;
+    width: 100%;
     margin: auto;
 }
+
 
 
 /* --------------- Arreglo del estilo del formulario --------------- */
