@@ -146,7 +146,11 @@ class Turno:
 #   Cuerpo del programa
 #-----------------------------------
 
-turno = Turno(host='localhost', user='admin', password='admin', database='efcarcare')
+#turno = Turno(host='localhost', user='admin', password='admin', database='efcarcare')
+turno = Turno(host='edfigueredo.mysql.pythonanywhere-services.com', user='admin', password='admin', database='edfigueredo$efcarcare')
+
+#Ruta_destino='./img/'
+Ruta_destino='/home/edfigueredo/mysite/img'
 
 #-----------------------Listado de turnos----------------
 @app.route("/turnos", methods=["GET"])
@@ -186,7 +190,7 @@ def agregar_turno():
     nombre_foto = secure_filename(archivo.filename)
     nombre_base, extension = os.path.splitext(nombre_foto)  # Divido el nombre en su nombre y extensión
     nombre_foto = f"{nombre_base}_{int(time.time())}{extension}"  # Rearmo el nombre: nombre base, fechahora y extensión
-    ruta_foto = os.path.join('./img/', nombre_foto)  # En esa ruta guarda la foto con ese nombre
+    ruta_foto = os.path.join(Ruta_destino, nombre_foto)  # En esa ruta guarda la foto con ese nombre
     
     try:
         archivo.save(ruta_foto)

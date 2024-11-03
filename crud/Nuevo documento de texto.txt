@@ -1,0 +1,8 @@
+python anywhere
+
+psw alejo7603
+
+Dirección del host de la base de datos:edfigueredo.mysql.pythonanywhere-services.com
+Nombre de usuario:edfigueredo
+nombre de la bd efcacare
+admin admin

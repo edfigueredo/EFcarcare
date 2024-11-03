@@ -726,29 +726,32 @@ header .div.contenedor nav {
 
 @media only screen and (max-width: 769px) {
 
+
+
     .form-contact-data {
+        justify-content: center;
         align-items: center;
         display: flex;
+        
+
         flex-wrap: wrap;
-        margin: 50px;
+        margin: 10px;
         padding: 20px;
     }
 
     .form-contact-data-1 {
+       
         padding: 10px;
-
         width: 100%;
+        
     }
-
-    ;
 
     .form-contact-data-2 {
+        
         padding: 10px;
-
         width: 100%;
     }
 
-    ;
 
     header nav.logo {
         margin: 0;
@@ -767,7 +770,7 @@ header .div.contenedor nav {
         display: none;
     }
 
-    #menu-check::checked~nav {
+    #menu-check:checked~nav {
         display: block;
     }
 
@@ -794,11 +797,11 @@ header .div.contenedor nav {
         display: none;
     }
 
-    #menu-check:checked~lavel #menu-abrir {
+    #menu-check:checked~label #menu-abrir {
         display: none;
     }
 
-    #menu-check:checked~lavel #menu-cerrar {
+    #menu-check:checked~label #menu-cerrar {
         display: block;
     }
 
@@ -832,26 +835,24 @@ header .div.contenedor nav {
     }
 
     h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
-
 
     main .container {
         display: block;
         padding: 0px;
-        width: 70%;
+        width: 90%;
     }
 
     .grid-img {
-        height: 250px;
-        margin: 20px;
-        width: 70%;
+        height: auto;
+        margin: 10px auto;
+        width: 80%;
     }
 
-
     .gid-img {
-        width: 300px;
-        height: 300px;
+        width: 100%;
+        height: auto;
         padding: 5px;
         transition: none;
     }
@@ -860,13 +861,10 @@ header .div.contenedor nav {
         margin: 0;
     }
 
-
     .footer {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
         align-content: center;
-
     }
-
 }

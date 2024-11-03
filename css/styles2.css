@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'dodge3';
+    src: url('../fonts/Dodgv2ci.ttf');
+}
+
+@font-face {
+    font-family: 'poiret';
+    src: url('../fonts/PoiretOne-Regular.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    width: 95%;
+    margin: auto;
+}
+
+.logo {
+    height: 400px;
+    width: 300px;
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+    top: -80px;
+}
+
+/* ESTILOS Y FORMATO AL MENÚ */
+nav {
+    display: flex;
+    justify-content: space-between;
+    height: 150px;
+}
+
+.menu {
+    display: flex;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #000000c5;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    border-right: 1px solid #bbb;
+}
+
+nav ul li a {
+    color: #6e4908;
+    text-decoration: none;
+    padding: 10px;
+    text-transform: uppercase;
+    margin: 0 10px;
+    transition: background-color 1.5s;
+}
+
+nav ul li a:hover {
+    border-radius: 8px;
+    background-color: #373634c5;
+    color: black;
+}
+
+nav ul li a:hover:not(.active) {
+    background-color: #d09707c5;
+}
+
+.active {
+    background-color: #555;
+}
+
+/* SERVICIOS Y PRODUCTOS */
+h2 {
+    background-color: white;
+    border-end-start-radius: 100px;
+    border-start-end-radius: 100px;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+    font-size: 3vw;
+    font-family: 'dodge3';
+}
+
+h3 {
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'poiret';
+}
+
+p {
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* BANNER */
+#banner img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.leyenda-banner {
+    position: relative;
+    top: -200px;
+    background-image: url('../img/mozaico-gris.jpg');
+    background-size: cover;
+    opacity: 0;
+    animation: carga 2s forwards;
+}
+
+@keyframes carga {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    text-align: center;
+    height: 200px;
+}
+
+/* ESTILO BOTON TURNO */
+.btn-turno {
+    background-color: rgb(248, 244, 244);
+    padding: 10px;
+    border-radius: 15px;
+    color: rgb(9, 0, 0);
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.btn-turno:hover {
+    color: rgb(9, 0, 0) !important;
+    border: 3px solid rgb(2, 10, 60);
+}
+
+.turno {
+    text-align: center;
+    color: rgb(247, 247, 247);
+}
+
+/* GALERIA DE IMAGENES */
+.container {
+    margin: auto;
+    display: grid;
+    grid-template-areas: 
+        'servicios servicios servicios'
+        'foto-izq foto-video foto-der'
+        'foto-izq foto-video foto-der';
+    grid-gap: 10px;
+    padding: 20px;
+    width: 90%;
+    color: #6e4908;
+}
+
+.grid-img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px;
+    width: 100%;
+}
+
+/* SECCION NOSOTROS */
+.nosotros {
+    margin: 0 10%;
+}
+
+iframe {
+    width: 100%;
+    height: 250px;
+}
+
+/* FORMULARIO ESTILOS */
+.form-contact {
+    text-align: center;
+    color: white;
+    background-image: url('/img/logo-blanco.JPG');
+    background-position: center 75%;
+    background-size: cover;
+}
+
+.form-contact-data {
+    width: 70%;
+    margin: auto;
+    margin-top: 2rem;
+    display: flex;
+}
+
+label {
+    font-size: 1.2rem;
+    font-family: 'poiret';
+    color: white;
+}
+
+input, .select-vehiculo, .text-area {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    font-family: 'poiret';
+    width: 100%;
+}
+
+input:focus, .select-vehiculo:focus {
+    border-bottom: 2px solid rgb(181, 51, 51);
+}
+
+input:valid {
+    color: white;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.sociales {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 1%;
+    bottom: 50%;
+    border-radius: 10px;
+}
+
+.socicon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
+}
+
+/* MEDIAQUERIES */
+@media only screen and (max-width: 900px) {
+    .logo {
+        height: auto;
+        width: auto;
+        margin: 0;
+    }
+
+    video {
+        height: 300px;
+        width: auto;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .container {
+        grid-template-areas: 
+            'foto-izq foto-der'
+            'foto-izq foto-der'
+            'foto-video foto-video';
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .form-contact-data {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    main .container {
+        display: block;
+        padding: 0;
+        width: 70%;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-content: center;
+    }
+}
