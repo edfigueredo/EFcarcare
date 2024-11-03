@@ -82,4 +82,4 @@ class Turno:
 #   cuerpo del programa"
 #-----------------------------------
 
-turno=Turno(host='localhost',user='root',password='root',database='efcarecar', port=3308)
+turno = Turno(host='cinthia92.mysql.pythonanywhere-services.com', user='cinthia92', password='codoacodo24', database='cinthia92$efcarcare')
